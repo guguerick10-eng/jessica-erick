@@ -1,53 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jessica ❤️ Erick</title>
+
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #ff6f91;
-    color: white;
-    text-align: center;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* TELA DE ENTRADA */
-#entrada {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: #ff4f7b;
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color:white;
+    text-align:center;
 }
 
-.coracao {
-    font-size: 100px;
-    cursor: pointer;
-    animation: pulsar 1s infinite;
+/* ENTRADA */
+#entrada{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
 }
 
-@keyframes pulsar {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+#entrada h2{
+    font-size:22px;
+    margin-bottom:20px;
 }
 
-/* CONTEÚDO PRINCIPAL */
-#conteudo {
-    display: none;
-    padding: 30px;
+.coracao{
+    font-size:90px;
+    cursor:pointer;
+    animation:pulsar 1.2s infinite;
 }
 
-button {
-    background: white;
-    color: #ff4f7b;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 30px;
-    font-size: 18px;
-    cursor: pointer;
+@keyframes pulsar{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.25);}
+    100%{transform:scale(1);}
+}
+
+/* CONTEÚDO */
+#conteudo{
+    display:none;
+    min-height:100vh;
+    padding:30px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    padding:25px;
+    border-radius:20px;
+    max-width:500px;
+    width:100%;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+#contador{
+    margin-bottom:25px;
+    font-weight:bold;
+}
+
+button{
+    background:white;
+    color:#ff4f7b;
+    border:none;
+    padding:14px 28px;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
 }
 </style>
 </head>
@@ -60,30 +105,31 @@ button {
 </div>
 
 <div id="conteudo">
-    <h1>Jessica ❤️ Erick</h1>
-    <p>
-    Desde 10/10/2025 minha vida ganhou mais cor,
-    mais paz e mais sentido. Você é minha escolha diária,
-    meu amor sem medida e o futuro que eu quero
-    construir todos os dias.
-    </p>
+    <div class="card">
+        <h1>Jessica ❤️ Erick</h1>
+        <p>
+        Desde 10/10/2025 minha vida ganhou mais cor,
+        mais paz e mais sentido. Você é minha escolha diária,
+        meu amor sem medida e o futuro que eu quero
+        construir todos os dias.
+        </p>
 
-    <h3 id="contador"></h3>
+        <div id="contador"></div>
 
-    <button onclick="alert('Eu te amo infinitamente ❤️')">
-    Clique aqui meu amor ✨
-    </button>
+        <button onclick="alert('Eu te amo infinitamente ❤️')">
+        Clique aqui meu amor ✨
+        </button>
+    </div>
 </div>
 
 <script>
-function abrirSite() {
-    document.getElementById("entrada").style.display = "none";
-    document.getElementById("conteudo").style.display = "block";
+function abrirSite(){
+    document.getElementById("entrada").style.display="none";
+    document.getElementById("conteudo").style.display="flex";
 }
 
-var dataInicio = new Date("2025-10-10T00:00:00");
-
-function atualizarContador() {
+var dataInicio = new Date("2025-04-10T00:00:00");
+function atualizarContador(){
     var agora = new Date();
     var diferenca = agora - dataInicio;
 
@@ -100,7 +146,7 @@ function atualizarContador() {
         segundos + " segundos";
 }
 
-setInterval(atualizarContador, 1000);
+setInterval(atualizarContador,1000);
 </script>
 
 </body>
