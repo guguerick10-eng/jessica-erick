@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jessica ❤️ Erick</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 30px 20px;
+}
+
+h1 {
+    font-size: 2.3em;
+    margin-bottom: 10px;
+}
+
+.frase {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 20px auto;
+    line-height: 1.6;
+}
+
+#contador {
+    margin: 25px 0;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.card {
+    background: rgba(255,255,255,0.15);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+button {
+    padding: 12px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background-color: white;
+    color: #ff4d6d;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+#mensagem {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.3em;
+    animation: aparecer 2s forwards;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Corações */
+.coracao {
+    position: fixed;
+    top: -10px;
+    font-size: 18px;
+    animation: cair linear infinite;
+}
+
+@keyframes cair {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Jessica ❤️ Erick</h1>
+
+    <div class="card">
+        <div class="frase">
+            Desde 10/10/2025 minha vida ganhou mais cor, mais paz e mais sentido.
+            Você é minha escolha diária, meu amor sem medida,
+            e o futuro que eu quero construir todos os dias.
+        </div>
+
+        <div id="contador"></div>
+
+        <button onclick="mostrarMensagem()">Clique aqui meu amor 💖</button>
+
+        <div id="mensagem">
+            Eu não quero apenas estar ao seu lado...  
+            Eu quero envelhecer com você.  
+            Quero rir, sonhar, conquistar e vencer a vida juntos.  
+            Eu te amo infinitamente. ❤️
+        </div>
+    </div>
+
+    <footer>
+        Para sempre nós dois 💍  
+        Erick
+    </footer>
+
+</div>
+
+<!-- Música Oficial -->
+<div style="margin-top:20px;">
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/0W1nFZ6L5pE?autoplay=1&loop=1&playlist=0W1nFZ6L5pE"
+frameborder="0"
+allow="autoplay">
+</iframe>
+</div>
+
+<script>
+// CONTADOR DESDE 10/10/2025
+const dataInicio = new Date("2025-10-10T00:00:00");
+const contador = document.getElementById("contador");
+
+function atualizarContador() {
+    const agora = new Date();
+    const diferenca = agora - dataInicio;
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferenca / 1000) % 60);
+
+    contador.innerHTML =
+        `Estamos juntos há ❤️ <br>
+        ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+}
+
+setInterval(atualizarContador, 1000);
+
+// MOSTRAR MENSAGEM
+function mostrarMensagem() {
+    document.getElementById("mensagem").style.display = "block";
+}
+
+// CORAÇÕES CAINDO
+function criarCoracao() {
+    const coracao = document.createElement("div");
+    coracao.classList.add("coracao");
+    coracao.innerHTML = "❤️";
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(coracao);
+
+    setTimeout(() => {
+        coracao.remove();
+    }, 5000);
+}
+
+setInterval(criarCoracao, 400);
+</script>
+
+</body>
+</html>
