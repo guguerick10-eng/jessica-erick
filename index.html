@@ -6,93 +6,81 @@
 <title>Jessica ❤️ Erick</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a0f2c, #111a40);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
 }
 
-body{
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    color:white;
-    text-align:center;
+/* TELA DE ENTRADA */
+#entrada {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
 }
 
-/* ENTRADA */
-#entrada{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
+/* LUA */
+.lua {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #f5f3ce 40%, #e0dca5 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 40px #f5f3ce;
 }
 
-#entrada h2{
-    font-size:22px;
-    margin-bottom:20px;
+/* CORAÇÃO CENTRAL */
+.coracao {
+    font-size: 80px;
+    cursor: pointer;
+    animation: pulsar 1.5s infinite;
+    z-index: 2;
 }
 
-.coracao{
-    font-size:90px;
-    cursor:pointer;
-    animation:pulsar 1.2s infinite;
+@keyframes pulsar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
-@keyframes pulsar{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.25);}
-    100%{transform:scale(1);}
+/* CORAÇÕES CAINDO */
+.heart {
+    position: fixed;
+    top: -10px;
+    color: red;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
 }
 
 /* CONTEÚDO */
-#conteudo{
-    display:none;
-    min-height:100vh;
-    padding:30px 20px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+#conteudo {
+    display: none;
+    padding: 30px 20px;
 }
 
-.card{
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(10px);
-    padding:25px;
-    border-radius:20px;
-    max-width:500px;
-    width:100%;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-
-h1{
-    margin-bottom:15px;
-}
-
-p{
-    line-height:1.6;
-    margin-bottom:20px;
-}
-
-#contador{
-    margin-bottom:25px;
-    font-weight:bold;
-}
-
-button{
-    background:white;
-    color:#ff4f7b;
-    border:none;
-    padding:14px 28px;
-    border-radius:30px;
-    font-size:16px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    transform:scale(1.05);
+button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
 }
 </style>
 </head>
@@ -100,36 +88,40 @@ button:hover{
 <body>
 
 <div id="entrada">
-    <h2>Clique aqui para abrir</h2>
+    <div class="lua"></div>
+    <h2>Sob a mesma lua... 🌙</h2>
+    <p>Clique no coração meu amor ❤️</p>
     <div class="coracao" onclick="abrirSite()">❤️</div>
 </div>
 
 <div id="conteudo">
-    <div class="card">
-        <h1>Jessica ❤️ Erick</h1>
-        <p>
-        Desde 10/04/2025 minha vida ganhou mais cor,
-        mais paz e mais sentido. Você é minha escolha diária,
-        meu amor sem medida e o futuro que eu quero
-        construir todos os dias.
-        </p>
+    <h1>Jessica ❤️ Erick</h1>
+    <p>
+    Desde 10 de Abril de 2025,<br>
+    minha vida ganhou mais cor,<br>
+    mais paz e mais sentido.<br><br>
+    Você é meu amor sem medida,<br>
+    minha escolha diária,<br>
+    e o futuro que eu quero construir todos os dias.
+    </p>
 
-        <div id="contador"></div>
+    <h3 id="contador"></h3>
 
-        <button onclick="alert('Eu te amo infinitamente ❤️')">
+    <button onclick="alert('Eu te amo infinitamente ❤️')">
         Clique aqui meu amor ✨
-        </button>
-    </div>
+    </button>
 </div>
 
 <script>
-function abrirSite(){
-    document.getElementById("entrada").style.display="none";
-    document.getElementById("conteudo").style.display="flex";
+function abrirSite() {
+    document.getElementById("entrada").style.display = "none";
+    document.getElementById("conteudo").style.display = "block";
 }
 
+/* CONTADOR */
 var dataInicio = new Date("2025-04-10T00:00:00");
-function atualizarContador(){
+
+function atualizarContador() {
     var agora = new Date();
     var diferenca = agora - dataInicio;
 
@@ -146,8 +138,9 @@ function atualizarContador(){
         segundos + " segundos";
 }
 
-setInterval(atualizarContador,1000);
-</script>
+setInterval(atualizarContador, 1000);
 
-</body>
-</html>
+/* GERAR CORAÇÕES CAINDO */
+function criarCoracao() {
+    const heart = document.createElement("div");
+    heart.classList.add
