@@ -12,16 +12,16 @@
 
   <style>
     /* ==========================================================================
-       1. VARIÁVEIS E RESET GLOBAL (ANTI-ROLAGEM HORIZONTAL)
+       1. VARIÁVEIS E RESET GLOBAL
        ========================================================================== */
     :root {
-      --bg-deep: #020716;
-      --bg-navy: #061330;
-      --neon-red: #ff1e42;
-      --neon-red-soft: #ff4d6d;
+      --bg-deep: #020613;
+      --bg-navy: #061536;
+      --neon-red: #ff183f;
+      --neon-red-soft: #ff5c77;
       --text-white: #ffffff;
-      --text-soft: #dce8ff;
-      --card-bg: rgba(7, 20, 48, 0.76);
+      --text-soft: #d8e8ff;
+      --card-bg: rgba(5, 16, 40, 0.78);
       --font-cursive: 'Great Vibes', cursive;
       --font-hand: 'Dancing Script', cursive;
       --font-sans: 'Montserrat', sans-serif;
@@ -44,7 +44,8 @@
     }
 
     body {
-      background: radial-gradient(ellipse at 50% 0%, #0d2758 0%, #050e24 50%, #020611 100%);
+      background:
+        radial-gradient(ellipse at 50% 10%, #103270 0%, #061433 45%, #020612 100%);
       min-height: 100vh;
       width: 100%;
       overflow-x: clip;
@@ -75,14 +76,16 @@
     }
 
     /* ==========================================================================
-       ELEMENTOS VISUAIS REUTILIZÁVEIS (LUA, CORAÇÕES 3D, ROSAS, TÍTULOS)
+       ELEMENTOS VISUAIS REALISTAS (LUA, NUVENS, CORAÇÕES 3D, ROSAS)
        ========================================================================== */
     .moon-svg-anim {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      filter: drop-shadow(0 0 30px rgba(170, 215, 255, 0.85))
-              drop-shadow(0 0 70px rgba(90, 165, 255, 0.55));
+      filter:
+        drop-shadow(0 0 25px rgba(210, 235, 255, 0.95))
+        drop-shadow(0 0 65px rgba(100, 175, 255, 0.75))
+        drop-shadow(0 0 120px rgba(45, 120, 235, 0.5));
       animation: moonPulse 6s ease-in-out infinite alternate;
       user-select: none;
       pointer-events: none;
@@ -90,23 +93,27 @@
 
     @keyframes moonPulse {
       0% {
-        transform: scale(0.98);
-        filter: drop-shadow(0 0 25px rgba(170, 215, 255, 0.75))
-                drop-shadow(0 0 60px rgba(90, 165, 255, 0.45));
+        transform: scale(0.99);
+        filter:
+          drop-shadow(0 0 22px rgba(210, 235, 255, 0.9))
+          drop-shadow(0 0 55px rgba(100, 175, 255, 0.65))
+          drop-shadow(0 0 100px rgba(45, 120, 235, 0.45));
       }
       100% {
-        transform: scale(1.03);
-        filter: drop-shadow(0 0 40px rgba(200, 235, 255, 0.95))
-                drop-shadow(0 0 90px rgba(110, 185, 255, 0.75));
+        transform: scale(1.02);
+        filter:
+          drop-shadow(0 0 32px rgba(235, 248, 255, 1))
+          drop-shadow(0 0 80px rgba(125, 195, 255, 0.85))
+          drop-shadow(0 0 140px rgba(65, 145, 255, 0.65));
       }
     }
 
     .floating-heart-3d {
       position: absolute;
       pointer-events: none;
-      z-index: 2;
-      filter: drop-shadow(0 0 10px rgba(255, 25, 65, 0.8));
-      animation: floatHeart 5s ease-in-out infinite;
+      z-index: 3;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 14px rgba(255, 20, 60, 0.75));
+      animation: floatHeart 5.5s ease-in-out infinite;
     }
 
     @keyframes floatHeart {
@@ -121,50 +128,64 @@
       45% { transform: scale(1.1); }
     }
 
+    /* Estrelas de 4 pontas brilhantes como na Imagem 2 */
+    .sparkle-star {
+      position: absolute;
+      pointer-events: none;
+      z-index: 2;
+      animation: twinkleStar 3.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes twinkleStar {
+      0% { opacity: 0.35; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.15); }
+    }
+
+    /* Títulos de seção ornamentados */
     .section-title-wrap {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin-bottom: 28px;
+      gap: 12px;
+      margin-bottom: 26px;
       text-align: center;
       position: relative;
-      z-index: 4;
+      z-index: 5;
       width: 100%;
     }
 
     .section-title-line {
-      height: 1px;
+      height: 1.5px;
       flex: 1;
-      max-width: 85px;
-      background: linear-gradient(90deg, transparent, rgba(255, 80, 110, 0.85), #ffffff);
+      max-width: 120px;
+      background: linear-gradient(90deg, transparent, rgba(255, 90, 120, 0.85), #ffffff);
     }
 
     .section-title-line.right {
-      background: linear-gradient(90deg, #ffffff, rgba(255, 80, 110, 0.85), transparent);
+      background: linear-gradient(90deg, #ffffff, rgba(255, 90, 120, 0.85), transparent);
     }
 
     .section-title-heart {
-      color: var(--neon-red);
-      font-size: 1.2rem;
-      text-shadow: 0 0 12px var(--neon-red);
-      animation: heartBeat 2s infinite;
+      width: 24px;
+      height: 22px;
+      filter: drop-shadow(0 0 8px #ff183f) drop-shadow(0 0 16px #ff183f);
+      animation: heartBeat 2.2s infinite;
       flex-shrink: 0;
     }
 
     .section-title {
       font-family: var(--font-cursive);
-      font-size: clamp(2rem, 5.5vw, 3.1rem);
+      font-size: clamp(2.1rem, 5.2vw, 3.2rem);
       font-weight: 400;
       color: #ffffff;
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 4px 12px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 0 16px rgba(255, 255, 255, 0.55), 0 4px 12px rgba(0, 0, 0, 0.9);
       line-height: 1.2;
       text-wrap: balance;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(20px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
@@ -173,40 +194,40 @@
       transform: translateY(0);
     }
 
+    /* Buquês de rosas realistas nos cantos */
     .corner-roses {
       position: absolute;
-      bottom: -6px;
-      width: clamp(130px, 22vw, 260px);
-      z-index: 1;
+      bottom: -10px;
+      width: clamp(160px, 25vw, 320px);
+      z-index: 3;
       pointer-events: none;
-      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.85));
-      opacity: 0.9;
+      filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.95));
     }
 
     .corner-roses.left {
-      left: -8px;
+      left: -12px;
     }
 
     .corner-roses.right {
-      right: -8px;
+      right: -12px;
       transform: scaleX(-1);
     }
 
     /* ==========================================================================
-       2. TELA INICIAL DE ENTRADA (SPLASH SCREEN)
+       2. TELA INICIAL DE ENTRADA (SPLASH SCREEN REALISTA)
        ========================================================================== */
     #splash-screen {
       position: fixed;
       inset: 0;
       z-index: 9999;
       background:
-        radial-gradient(circle at 50% 30%, rgba(85, 160, 255, 0.32) 0%, rgba(14, 42, 96, 0.68) 40%, rgba(3, 9, 25, 0.98) 80%),
-        linear-gradient(180deg, #020716 0%, #081c42 60%, #030919 100%);
+        radial-gradient(circle at 70% 35%, rgba(110, 185, 255, 0.45) 0%, rgba(20, 62, 135, 0.7) 35%, rgba(4, 12, 32, 0.98) 78%),
+        linear-gradient(180deg, #020614 0%, #0a2354 55%, #03091a 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px 16px 60px;
+      padding: 20px 16px 50px;
       overflow: hidden;
       transition: opacity 0.9s ease, transform 0.9s ease, visibility 0.9s;
     }
@@ -218,44 +239,45 @@
       pointer-events: none;
     }
 
-    .night-clouds {
+    .splash-clouds-svg {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 20% 70%, rgba(22, 62, 130, 0.45) 0%, transparent 45%),
-        radial-gradient(circle at 80% 65%, rgba(30, 82, 160, 0.45) 0%, transparent 45%);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       pointer-events: none;
       z-index: 1;
+      opacity: 0.9;
     }
 
     .splash-inner {
       position: relative;
       z-index: 5;
       width: 100%;
-      max-width: 920px;
+      max-width: 960px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: 18px;
+      gap: 16px;
     }
 
     .splash-moon-box {
-      width: clamp(135px, 22vw, 230px);
-      height: clamp(135px, 22vw, 230px);
+      width: clamp(160px, 25vw, 255px);
+      height: clamp(160px, 25vw, 255px);
       margin: 0 auto;
     }
 
     .splash-phrase {
       font-family: var(--font-cursive);
-      font-size: clamp(2.15rem, 6.5vw, 3.7rem);
-      line-height: 1.24;
+      font-size: clamp(2.2rem, 6.2vw, 3.8rem);
+      line-height: 1.2;
       color: #ffffff;
       text-shadow:
-        0 0 18px rgba(255, 255, 255, 0.65),
-        0 0 35px rgba(120, 185, 255, 0.6),
-        0 4px 15px rgba(0, 0, 0, 0.9);
+        0 0 20px rgba(255, 255, 255, 0.75),
+        0 0 40px rgba(120, 190, 255, 0.7),
+        0 4px 14px rgba(0, 0, 0, 0.95);
       max-width: 620px;
       text-wrap: balance;
       padding: 0 8px;
@@ -266,8 +288,8 @@
       background: none;
       border: none;
       cursor: pointer;
-      width: clamp(190px, 48vw, 225px);
-      height: clamp(170px, 43vw, 200px);
+      width: clamp(200px, 48vw, 240px);
+      height: clamp(175px, 42vw, 210px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -280,24 +302,24 @@
     .heart-open-btn:hover,
     .heart-open-btn:focus {
       transform: scale(1.07);
-      filter: drop-shadow(0 0 28px rgba(255, 30, 70, 1));
+      filter: drop-shadow(0 0 32px rgba(255, 30, 70, 1));
     }
 
     .heart-open-btn.clicked-heart {
       transform: scale(1.3);
-      filter: drop-shadow(0 0 60px #ff1e42) brightness(1.3);
+      filter: drop-shadow(0 0 65px #ff183f) brightness(1.3);
     }
 
     @keyframes pulseHeartBtn {
       0%, 100% {
         transform: scale(1);
-        filter: drop-shadow(0 0 16px rgba(255, 25, 65, 0.85))
-                drop-shadow(0 0 36px rgba(255, 10, 50, 0.5));
+        filter: drop-shadow(0 0 18px rgba(255, 25, 65, 0.9))
+                drop-shadow(0 0 40px rgba(255, 10, 50, 0.55));
       }
       50% {
         transform: scale(1.05);
-        filter: drop-shadow(0 0 26px rgba(255, 45, 85, 1))
-                drop-shadow(0 0 55px rgba(255, 20, 60, 0.8));
+        filter: drop-shadow(0 0 28px rgba(255, 50, 90, 1))
+                drop-shadow(0 0 60px rgba(255, 20, 60, 0.85));
       }
     }
 
@@ -312,10 +334,10 @@
       position: relative;
       z-index: 2;
       font-family: var(--font-cursive);
-      font-size: clamp(1.75rem, 5vw, 2.05rem);
+      font-size: clamp(1.85rem, 5vw, 2.2rem);
       color: #ffffff;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 255, 255, 0.8);
-      margin-top: -12px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85), 0 0 14px rgba(255, 255, 255, 0.85);
+      margin-top: -16px;
       pointer-events: none;
     }
 
@@ -327,15 +349,15 @@
       top: 0;
       z-index: 100;
       width: 100%;
-      background: rgba(3, 10, 26, 0.9);
+      background: linear-gradient(180deg, rgba(2, 7, 20, 0.96) 0%, rgba(5, 15, 38, 0.9) 100%);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 50, 85, 0.28);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
+      border-bottom: 1px solid rgba(255, 60, 95, 0.3);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.85);
     }
 
     .header-inner {
-      max-width: 1200px;
+      max-width: 1220px;
       margin: 0 auto;
       padding: 10px 20px;
       display: flex;
@@ -349,22 +371,19 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       font-family: var(--font-cursive);
-      font-size: clamp(1.9rem, 4vw, 2.45rem);
+      font-size: clamp(2rem, 4vw, 2.6rem);
       color: #ffffff;
-      text-shadow: 0 0 14px rgba(255, 255, 255, 0.55);
+      text-shadow: 0 0 16px rgba(255, 255, 255, 0.65);
       white-space: nowrap;
     }
 
-    .brand-heart {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--neon-red);
-      filter: drop-shadow(0 0 10px var(--neon-red));
+    .brand-heart-svg {
+      width: 30px;
+      height: 28px;
+      filter: drop-shadow(0 0 10px #ff183f) drop-shadow(0 0 20px #ff183f);
       animation: heartBeat 2.2s infinite;
-      font-size: 1.35rem;
     }
 
     .main-nav {
@@ -379,12 +398,12 @@
       font-size: 0.86rem;
       font-weight: 500;
       min-height: 44px;
-      padding: 8px 12px;
+      padding: 8px 14px;
       border-radius: 10px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 7px;
       transition: all 0.25s ease;
       position: relative;
       white-space: nowrap;
@@ -393,7 +412,7 @@
     .main-nav a:hover,
     .main-nav a.active {
       color: #ffffff;
-      background: rgba(255, 30, 66, 0.16);
+      background: rgba(255, 24, 63, 0.16);
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
     }
 
@@ -401,12 +420,12 @@
     .main-nav a:hover::after {
       content: '';
       position: absolute;
-      bottom: 2px;
-      left: 15%;
-      width: 70%;
-      height: 2px;
+      bottom: 0;
+      left: 10%;
+      width: 80%;
+      height: 2.5px;
       background: var(--neon-red);
-      box-shadow: 0 0 8px var(--neon-red);
+      box-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red);
       border-radius: 2px;
     }
 
@@ -416,28 +435,30 @@
     }
 
     /* ==========================================================================
-       ESTRUTURA DAS SEÇÕES PRINCIPAIS
+       FAIXAS DE CENÁRIO COM NUVENS NOTURNAS E ESTRELAS (COMO NA IMAGEM 2)
        ========================================================================== */
     .scene-band {
       position: relative;
       width: 100%;
-      max-width: 1240px;
+      max-width: 1260px;
       margin: 0 auto;
-      padding: 56px 24px 68px;
-      border-bottom: 1px solid rgba(120, 175, 255, 0.16);
+      padding: 52px 24px 64px;
+      border-bottom: 1px solid rgba(110, 175, 255, 0.22);
+      box-shadow: inset 0 0 60px rgba(2, 6, 18, 0.85);
       overflow: hidden;
       z-index: 4;
+      background:
+        radial-gradient(ellipse at 55% 35%, rgba(28, 86, 175, 0.42) 0%, rgba(10, 32, 78, 0.55) 48%, rgba(3, 9, 24, 0.95) 100%);
     }
 
-    .scene-band::before {
-      content: '';
+    .band-clouds-bg {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 50% 40%, rgba(32, 88, 175, 0.26) 0%, transparent 62%),
-        radial-gradient(circle at 20% 80%, rgba(16, 45, 100, 0.32) 0%, transparent 55%);
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: 0;
+      opacity: 0.85;
     }
 
     /* ==========================================================================
@@ -447,9 +468,9 @@
       position: relative;
       z-index: 4;
       display: grid;
-      grid-template-columns: 1.1fr 0.95fr 0.95fr;
+      grid-template-columns: 1.12fr 0.98fr 0.9fr;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
       width: 100%;
     }
 
@@ -464,19 +485,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .declaration-title {
       font-family: var(--font-cursive);
-      font-size: clamp(2.35rem, 5.5vw, 3.5rem);
-      line-height: 1.2;
+      font-size: clamp(2.45rem, 5.2vw, 3.7rem);
+      line-height: 1.15;
       color: #ffffff;
       text-shadow:
-        0 0 18px rgba(255, 255, 255, 0.55),
-        0 4px 14px rgba(0, 0, 0, 0.85);
+        0 0 20px rgba(255, 255, 255, 0.65),
+        0 4px 16px rgba(0, 0, 0, 0.95);
       text-wrap: balance;
-      max-width: 480px;
+      max-width: 500px;
     }
 
     .ornament-divider {
@@ -485,27 +506,27 @@
       justify-content: center;
       gap: 12px;
       width: 100%;
-      max-width: 280px;
+      max-width: 310px;
     }
 
     .ornament-divider span.line {
       flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(200, 225, 255, 0.8), transparent);
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, rgba(210, 235, 255, 0.9), transparent);
     }
 
     .ornament-divider span.heart-outline {
-      color: #dceeff;
-      font-size: 1.25rem;
-      text-shadow: 0 0 10px rgba(160, 210, 255, 0.9);
+      color: #e6f2ff;
+      font-size: 1.35rem;
+      text-shadow: 0 0 12px rgba(160, 215, 255, 0.95);
     }
 
     .declaration-text {
-      font-size: clamp(0.95rem, 2.6vw, 1.06rem);
-      line-height: 1.65;
-      color: var(--text-soft);
-      max-width: 440px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+      font-size: clamp(0.95rem, 2.2vw, 1.08rem);
+      line-height: 1.62;
+      color: #e8f1ff;
+      max-width: 450px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
       text-wrap: pretty;
     }
 
@@ -516,54 +537,46 @@
       gap: 10px;
       min-height: 48px;
       margin-top: 6px;
-      padding: 10px 26px;
+      padding: 10px 28px;
       border-radius: 50px;
-      background: linear-gradient(135deg, rgba(160, 15, 45, 0.72), rgba(65, 8, 25, 0.9));
-      border: 1.5px solid #ff3b60;
+      background: linear-gradient(180deg, rgba(195, 18, 52, 0.78) 0%, rgba(80, 6, 22, 0.92) 100%);
+      border: 2px solid #ff4769;
       box-shadow:
-        0 0 16px rgba(255, 30, 66, 0.7),
-        inset 0 0 12px rgba(255, 70, 100, 0.45);
+        0 0 20px rgba(255, 24, 63, 0.85),
+        inset 0 0 14px rgba(255, 90, 120, 0.55);
       color: #ffffff;
       text-decoration: none;
       font-family: var(--font-cursive);
-      font-size: clamp(1.5rem, 4.5vw, 1.75rem);
+      font-size: clamp(1.55rem, 4.2vw, 1.85rem);
       letter-spacing: 0.5px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       max-width: 100%;
     }
 
     .neon-pill-btn:hover {
-      transform: translateY(-2px) scale(1.02);
+      transform: translateY(-2px) scale(1.03);
       box-shadow:
-        0 0 24px rgba(255, 30, 66, 0.95),
-        inset 0 0 18px rgba(255, 100, 130, 0.65);
+        0 0 30px rgba(255, 24, 63, 1),
+        inset 0 0 20px rgba(255, 120, 145, 0.75);
     }
 
+    /* Coluna Central: Lua Cheia Realista + Casal no Píer sobre o Lago */
     .pier-scene-col {
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
     }
 
-    .pier-moon {
-      width: clamp(165px, 42vw, 235px);
-      height: clamp(165px, 42vw, 235px);
-      margin-bottom: -48px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .couple-pier-svg {
-      position: relative;
-      z-index: 2;
+    .pier-scene-illustration {
       width: 100%;
-      max-width: 330px;
+      max-width: 400px;
       height: auto;
-      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.95));
+      display: block;
     }
 
+    /* Coluna Direita: Contador dentro do Coração Neon Duplo */
     .counter-col {
       display: flex;
       flex-direction: column;
@@ -571,13 +584,12 @@
       justify-content: center;
     }
 
-    /* AJUSTE PARA O CONTADOR FICAR PERFEITAMENTE DENTRO DO CORAÇÃO */
     .heart-counter-card {
       position: relative;
       width: 100%;
-      max-width: 320px;
-      min-height: 295px;
-      padding: 30px 14px 38px;
+      max-width: 330px;
+      min-height: 305px;
+      padding: 32px 16px 42px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -593,7 +605,7 @@
       height: 100%;
       pointer-events: none;
       z-index: 0;
-      filter: drop-shadow(0 0 15px rgba(255, 25, 65, 0.85));
+      filter: drop-shadow(0 0 18px rgba(255, 24, 63, 0.9));
     }
 
     .counter-inner-content {
@@ -608,43 +620,43 @@
 
     .counter-title {
       font-family: var(--font-cursive);
-      font-size: clamp(1.35rem, 4vw, 1.55rem);
+      font-size: clamp(1.4rem, 3.8vw, 1.62rem);
       line-height: 1.15;
       color: #ffffff;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      max-width: 210px;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+      max-width: 215px;
       text-wrap: balance;
     }
 
     .counter-subtitle {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      margin-top: 1px;
+      font-size: 0.82rem;
+      color: #e4f0ff;
+      margin-top: 2px;
     }
 
     .counter-days-highlight {
-      font-size: clamp(1.75rem, 5.2vw, 2.1rem);
+      font-size: clamp(1.85rem, 5.2vw, 2.25rem);
       font-weight: 700;
       color: #ffffff;
       text-shadow:
-        0 0 12px var(--neon-red),
-        0 0 24px var(--neon-red);
+        0 0 14px var(--neon-red),
+        0 0 28px var(--neon-red);
       line-height: 1.1;
-      margin: 1px 0;
+      margin: 2px 0;
     }
 
     .counter-days-highlight span.days-label {
       font-family: var(--font-cursive);
       font-weight: 400;
-      font-size: clamp(1.65rem, 4.8vw, 1.95rem);
-      margin-left: 4px;
+      font-size: clamp(1.75rem, 4.8vw, 2.1rem);
+      margin-left: 5px;
     }
 
     .counter-hms-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
       margin-top: 2px;
       width: 100%;
     }
@@ -653,28 +665,29 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 44px;
+      min-width: 46px;
     }
 
     .hms-value {
-      font-size: clamp(1.05rem, 3.2vw, 1.2rem);
+      font-size: clamp(1.08rem, 3.2vw, 1.25rem);
       font-weight: 700;
       color: #ffffff;
-      text-shadow: 0 0 8px rgba(255, 80, 110, 0.85);
+      text-shadow: 0 0 10px rgba(255, 80, 110, 0.9);
     }
 
     .hms-label {
       font-size: 0.68rem;
-      color: #c5d9ff;
+      color: #cce0ff;
     }
 
     .counter-eternity-note {
       margin-top: 8px;
-      font-size: 0.82rem;
-      color: var(--text-soft);
-      max-width: 240px;
+      font-size: 0.84rem;
+      color: #e2eeff;
+      max-width: 245px;
       line-height: 1.4;
       text-align: center;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
     }
 
     /* ==========================================================================
@@ -684,8 +697,8 @@
       position: relative;
       z-index: 4;
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 32px;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 28px;
       align-items: center;
       width: 100%;
     }
@@ -700,43 +713,43 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       padding: 8px 4px;
       width: 100%;
     }
 
     .polaroid-card {
-      background: #f8f9fc;
+      background: linear-gradient(180deg, #ffffff 0%, #eef2f9 100%);
       padding: 9px 9px 16px 9px;
-      border-radius: 6px;
-      width: 144px;
+      border-radius: 5px;
+      width: 142px;
       box-shadow:
-        0 10px 24px rgba(0, 0, 0, 0.75),
-        0 0 15px rgba(140, 185, 255, 0.2);
+        0 12px 28px rgba(0, 0, 0, 0.85),
+        0 0 18px rgba(130, 185, 255, 0.25);
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       user-select: none;
     }
 
-    .polaroid-card:nth-child(1) { transform: rotate(-4deg); }
-    .polaroid-card:nth-child(2) { transform: rotate(3deg); }
+    .polaroid-card:nth-child(1) { transform: rotate(-5deg); }
+    .polaroid-card:nth-child(2) { transform: rotate(3.5deg) translateY(4px); }
     .polaroid-card:nth-child(3) { transform: rotate(-2.5deg); }
-    .polaroid-card:nth-child(4) { transform: rotate(3.5deg); }
-    .polaroid-card:nth-child(5) { transform: rotate(-2.5deg); }
+    .polaroid-card:nth-child(4) { transform: rotate(4deg) translateY(3px); }
+    .polaroid-card:nth-child(5) { transform: rotate(-3.5deg); }
 
     .polaroid-card:hover {
-      transform: rotate(0deg) scale(1.06) translateY(-5px) !important;
+      transform: rotate(0deg) scale(1.07) translateY(-6px) !important;
       z-index: 10;
       box-shadow:
-        0 14px 30px rgba(0, 0, 0, 0.9),
-        0 0 22px rgba(255, 45, 85, 0.75);
+        0 16px 34px rgba(0, 0, 0, 0.95),
+        0 0 24px rgba(255, 45, 85, 0.8);
     }
 
     .polaroid-img-box {
       width: 100%;
       aspect-ratio: 1 / 1;
-      background: #081226; /* Fundo elegante para fotos inteiras */
+      background: #081226;
       border-radius: 3px;
       overflow: hidden;
       position: relative;
@@ -745,7 +758,7 @@
       justify-content: center;
     }
 
-    /* ALTERADO PARA OBJECT-FIT: CONTAIN (EXibe a foto inteira sem cortar) */
+    /* Mantém as fotos 100% inteiras sem cortar */
     .polaroid-img-box img {
       width: 100%;
       height: 100%;
@@ -766,7 +779,7 @@
       margin-top: 10px;
       font-family: var(--font-cursive);
       font-size: 1.25rem;
-      color: #1c2536;
+      color: #182232;
       text-align: center;
       line-height: 1.15;
     }
@@ -791,11 +804,11 @@
       justify-content: center;
       gap: 10px;
       font-family: var(--font-cursive);
-      font-size: clamp(1.85rem, 5vw, 2.35rem);
+      font-size: clamp(1.85rem, 4.8vw, 2.35rem);
       color: #ffffff;
       margin-bottom: 14px;
       text-align: center;
-      text-shadow: 0 0 14px rgba(255, 255, 255, 0.45);
+      text-shadow: 0 0 14px rgba(255, 255, 255, 0.5);
       line-height: 1.2;
       text-wrap: balance;
     }
@@ -803,14 +816,14 @@
     .music-card {
       width: 100%;
       max-width: 400px;
-      background: linear-gradient(145deg, rgba(10, 28, 66, 0.92), rgba(4, 12, 32, 0.96));
-      border: 1px solid rgba(120, 175, 255, 0.4);
+      background: linear-gradient(145deg, rgba(8, 24, 58, 0.92), rgba(3, 10, 28, 0.96));
+      border: 1.5px solid rgba(120, 180, 255, 0.42);
       border-radius: 20px;
-      padding: 22px 20px;
+      padding: 20px 20px;
       box-shadow:
-        0 12px 32px rgba(0, 0, 0, 0.85),
-        0 0 24px rgba(60, 130, 255, 0.28),
-        inset 0 0 18px rgba(255, 30, 66, 0.14);
+        0 14px 34px rgba(0, 0, 0, 0.9),
+        0 0 26px rgba(65, 140, 255, 0.3),
+        inset 0 0 20px rgba(255, 30, 66, 0.14);
       position: relative;
       overflow: hidden;
     }
@@ -823,14 +836,14 @@
     }
 
     .music-moon-disc {
-      width: 80px;
-      height: 80px;
+      width: 84px;
+      height: 84px;
       border-radius: 50%;
       flex-shrink: 0;
       position: relative;
-      box-shadow: 0 0 18px rgba(135, 195, 255, 0.8);
+      box-shadow: 0 0 22px rgba(140, 200, 255, 0.9);
       overflow: hidden;
-      border: 2px solid rgba(190, 225, 255, 0.75);
+      border: 2px solid rgba(200, 230, 255, 0.85);
     }
 
     .music-moon-disc.playing-spin {
@@ -838,8 +851,8 @@
     }
 
     @keyframes discGlow {
-      0% { box-shadow: 0 0 14px rgba(135, 195, 255, 0.7); }
-      100% { box-shadow: 0 0 26px rgba(255, 45, 85, 0.95), 0 0 38px rgba(135, 195, 255, 0.85); }
+      0% { box-shadow: 0 0 16px rgba(135, 195, 255, 0.75); }
+      100% { box-shadow: 0 0 28px rgba(255, 45, 85, 0.95), 0 0 42px rgba(135, 195, 255, 0.9); }
     }
 
     .music-info {
@@ -849,7 +862,7 @@
     }
 
     .music-artist {
-      font-size: 1rem;
+      font-size: 1.02rem;
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 3px;
@@ -857,7 +870,7 @@
 
     .music-track {
       font-size: 0.9rem;
-      color: #d0e2ff;
+      color: #d4e5ff;
     }
 
     .music-eq {
@@ -900,14 +913,14 @@
 
     .music-time {
       font-size: 0.75rem;
-      color: #b8cff8;
+      color: #c2d8ff;
       min-width: 68px;
       font-variant-numeric: tabular-nums;
     }
 
     .music-progress-bar {
       flex: 1;
-      height: 8px;
+      height: 7px;
       background: rgba(255, 255, 255, 0.2);
       border-radius: 10px;
       position: relative;
@@ -921,7 +934,7 @@
       background: linear-gradient(90deg, #4da3ff, #ffffff);
       border-radius: 10px;
       position: relative;
-      box-shadow: 0 0 10px rgba(110, 185, 255, 0.9);
+      box-shadow: 0 0 10px rgba(110, 185, 255, 0.95);
     }
 
     .music-progress-Fill-dot {
@@ -933,7 +946,7 @@
       height: 13px;
       background: #ffffff;
       border-radius: 50%;
-      box-shadow: 0 0 10px #ffffff;
+      box-shadow: 0 0 12px #ffffff;
     }
 
     .music-controls {
@@ -946,7 +959,7 @@
     .ctrl-btn {
       background: none;
       border: none;
-      color: #d8e6ff;
+      color: #dceaff;
       font-size: 1.12rem;
       min-width: 44px;
       min-height: 44px;
@@ -970,7 +983,7 @@
       background: #ffffff;
       color: #061330;
       font-size: 1.25rem;
-      box-shadow: 0 0 18px rgba(255, 255, 255, 0.85);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
     }
 
     .ctrl-play-main:hover {
@@ -981,7 +994,7 @@
     .volume-control-row {
       margin-top: 12px;
       padding-top: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -990,7 +1003,7 @@
 
     .volume-label {
       font-size: 0.74rem;
-      color: #b8cff8;
+      color: #c2d8ff;
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -1001,7 +1014,7 @@
       appearance: none;
       width: 130px;
       height: 5px;
-      background: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.24);
       border-radius: 8px;
       outline: none;
       cursor: pointer;
@@ -1042,24 +1055,24 @@
 
     .timeline-line {
       position: absolute;
-      top: 36px;
+      top: 37px;
       left: 6%;
       right: 6%;
-      height: 2px;
+      height: 2.5px;
       background: linear-gradient(90deg,
         transparent 0%,
-        rgba(255, 70, 100, 0.85) 12%,
-        rgba(255, 220, 230, 0.95) 50%,
-        rgba(255, 70, 100, 0.85) 88%,
+        rgba(255, 60, 95, 0.9) 12%,
+        rgba(255, 230, 235, 1) 50%,
+        rgba(255, 60, 95, 0.9) 88%,
         transparent 100%);
-      box-shadow: 0 0 12px rgba(255, 30, 66, 0.8);
+      box-shadow: 0 0 14px rgba(255, 24, 63, 0.9);
       z-index: 1;
     }
 
     .timeline-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
+      gap: 14px;
       position: relative;
       z-index: 2;
       width: 100%;
@@ -1074,18 +1087,13 @@
     }
 
     .timeline-heart-marker {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #ff2a55 0%, #7a061e 100%);
-      border: 2px solid #ff99ac;
-      box-shadow: 0 0 14px var(--neon-red);
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.92rem;
-      color: #ffffff;
       margin-bottom: 6px;
+      filter: drop-shadow(0 0 10px var(--neon-red)) drop-shadow(0 0 18px var(--neon-red));
       animation: heartBeat 2.6s infinite;
       flex-shrink: 0;
     }
@@ -1102,9 +1110,9 @@
 
     .timeline-card {
       width: 100%;
-      min-height: 104px;
-      background: var(--card-bg);
-      border: 1px solid rgba(130, 175, 255, 0.35);
+      min-height: 102px;
+      background: linear-gradient(180deg, rgba(8, 24, 58, 0.82) 0%, rgba(4, 12, 32, 0.9) 100%);
+      border: 1px solid rgba(130, 180, 255, 0.4);
       border-radius: 16px;
       padding: 14px 12px;
       display: flex;
@@ -1113,8 +1121,8 @@
       justify-content: center;
       gap: 5px;
       box-shadow:
-        0 8px 22px rgba(0, 0, 0, 0.65),
-        inset 0 0 14px rgba(80, 140, 255, 0.14);
+        0 10px 24px rgba(0, 0, 0, 0.75),
+        inset 0 0 16px rgba(80, 145, 255, 0.16);
       transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
@@ -1124,7 +1132,7 @@
     }
 
     .timeline-card-title {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: #ffffff;
       line-height: 1.35;
@@ -1137,85 +1145,98 @@
     }
 
     .timeline-card-desc {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: #c5d8ff;
-      line-height: 1.38;
+      line-height: 1.35;
     }
 
     /* ==========================================================================
-       9. MENSAGEM ESPECIAL PARA JESSICA (PERGAMINHO)
+       9. MENSAGEM ESPECIAL PARA JESSICA (PERGAMINHO REALISTA 3D)
        ========================================================================== */
     .scroll-letter-wrapper {
       position: relative;
       z-index: 4;
-      max-width: 860px;
+      max-width: 880px;
       width: 100%;
       margin: 0 auto;
-      padding: 10px 18px;
+      padding: 12px 22px;
     }
 
     .parchment-scroll {
       position: relative;
       background:
-        radial-gradient(circle at 50% 50%, #fff6e0 0%, #f3dec0 58%, #dfc096 100%);
-      color: #2b1810;
-      border-radius: 14px;
-      padding: 32px 38px 36px;
+        radial-gradient(ellipse at 50% 50%, #fff8e7 0%, #f4dfc0 55%, #dcba8c 92%, #b88a56 100%);
+      color: #2b160c;
+      border-radius: 12px;
+      padding: 34px 44px 38px;
       box-shadow:
-        0 16px 40px rgba(0, 0, 0, 0.85),
-        0 0 28px rgba(255, 190, 130, 0.22),
-        inset 0 0 32px rgba(135, 80, 30, 0.35);
-      border-top: 2px solid #f7e7ce;
-      border-bottom: 2px solid #b88b58;
+        0 20px 50px rgba(0, 0, 0, 0.92),
+        0 0 35px rgba(255, 195, 130, 0.28),
+        inset 0 0 42px rgba(125, 72, 24, 0.45);
+      border-top: 2px solid #faecd2;
+      border-bottom: 3px solid #9e6f3c;
     }
 
+    /* Rolos cilíndricos 3D realistas nas pontas do pergaminho */
     .parchment-scroll::before,
     .parchment-scroll::after {
       content: '';
       position: absolute;
-      top: -8px;
-      bottom: -8px;
-      width: 22px;
-      background: linear-gradient(90deg, #8c5a2b 0%, #e6c699 45%, #b8844f 80%, #6e421c 100%);
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.75);
+      top: -12px;
+      bottom: -12px;
+      width: 28px;
+      background:
+        radial-gradient(ellipse at 50% 6%, #4a2810 0%, #2b1506 45%, transparent 50%),
+        linear-gradient(90deg, #6e411b 0%, #d4ae7e 30%, #f7e4c6 50%, #b5834d 78%, #522e11 100%);
+      border-radius: 14px;
+      box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.85),
+        inset 0 -8px 12px rgba(45, 22, 6, 0.65);
     }
 
-    .parchment-scroll::before { left: -11px; }
-    .parchment-scroll::after { right: -11px; }
+    .parchment-scroll::before {
+      left: -14px;
+      transform: rotate(-1.5deg);
+    }
+
+    .parchment-scroll::after {
+      right: -14px;
+      transform: rotate(1.5deg);
+    }
 
     .parchment-text {
       font-family: var(--font-hand);
-      font-size: clamp(1.22rem, 3.8vw, 1.54rem);
-      font-weight: 600;
+      font-size: clamp(1.24rem, 3.6vw, 1.56rem);
+      font-weight: 700;
       line-height: 1.58;
       text-align: center;
-      color: #2a140d;
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      color: #261107;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
     }
 
     .parchment-signature {
-      margin-top: 14px;
+      margin-top: 12px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
       gap: 6px;
       font-family: var(--font-cursive);
-      font-size: clamp(1.6rem, 4.5vw, 1.9rem);
-      color: #b80f2e;
-      transform: rotate(-5deg);
+      font-size: clamp(1.7rem, 4.5vw, 2.05rem);
+      color: #c90f32;
+      transform: rotate(-6deg);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
 
     /* ==========================================================================
-       10. SEÇÃO FINAL "PARA SEMPRE"
+       10. SEÇÃO FINAL "PARA SEMPRE" (LUA + CASAL REALISTA + INFINITO NEON)
        ========================================================================== */
     .forever-grid {
       position: relative;
       z-index: 4;
       display: grid;
-      grid-template-columns: 1fr 1.35fr 1fr;
+      grid-template-columns: 1.05fr 1.3fr 1fr;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
       width: 100%;
     }
 
@@ -1232,7 +1253,7 @@
 
     .forever-left-svg {
       width: 100%;
-      max-width: 290px;
+      max-width: 320px;
       height: auto;
     }
 
@@ -1247,49 +1268,50 @@
 
     .forever-quote {
       font-family: var(--font-cursive);
-      font-size: clamp(1.9rem, 5.2vw, 2.6rem);
-      line-height: 1.24;
+      font-size: clamp(1.95rem, 5vw, 2.65rem);
+      line-height: 1.22;
       color: #ffffff;
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.55);
+      text-shadow: 0 0 16px rgba(255, 255, 255, 0.65), 0 4px 12px rgba(0, 0, 0, 0.9);
       text-wrap: balance;
-      max-width: 460px;
+      max-width: 470px;
     }
 
     .forever-names {
       font-family: var(--font-cursive);
-      font-size: clamp(2.45rem, 8.5vw, 4.2rem);
+      font-size: clamp(2.6rem, 8vw, 4.3rem);
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      text-shadow: 0 0 22px rgba(255, 255, 255, 0.7);
+      gap: 12px;
+      text-shadow: 0 0 24px rgba(255, 255, 255, 0.75);
       white-space: nowrap;
       margin: 2px 0;
     }
 
     .forever-date {
-      font-size: clamp(0.9rem, 2.8vw, 1.08rem);
-      color: #dce8ff;
+      font-size: clamp(0.92rem, 2.6vw, 1.1rem);
+      color: #e4f0ff;
       letter-spacing: 0.4px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
     }
 
     .forever-pill-banner {
       margin-top: 6px;
-      padding: 10px 24px;
+      padding: 10px 28px;
       border-radius: 50px;
-      background: linear-gradient(135deg, rgba(130, 12, 38, 0.72), rgba(45, 5, 18, 0.9));
-      border: 1.5px solid #ff3358;
+      background: linear-gradient(180deg, rgba(175, 14, 46, 0.78) 0%, rgba(60, 5, 18, 0.92) 100%);
+      border: 2px solid #ff3d62;
       box-shadow:
-        0 0 18px rgba(255, 30, 66, 0.8),
-        inset 0 0 14px rgba(255, 60, 95, 0.45);
+        0 0 22px rgba(255, 24, 63, 0.85),
+        inset 0 0 14px rgba(255, 80, 110, 0.5);
       font-family: var(--font-cursive);
-      font-size: clamp(1.45rem, 4.5vw, 2rem);
+      font-size: clamp(1.5rem, 4.4vw, 2.05rem);
       color: #ffffff;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       max-width: 100%;
       text-align: center;
     }
@@ -1302,10 +1324,11 @@
 
     .infinity-svg {
       width: 100%;
-      max-width: 240px;
+      max-width: 270px;
       height: auto;
-      filter: drop-shadow(0 0 16px rgba(255, 30, 66, 0.95))
-              drop-shadow(0 0 30px rgba(255, 30, 66, 0.6));
+      filter:
+        drop-shadow(0 0 14px rgba(255, 40, 75, 1))
+        drop-shadow(0 0 32px rgba(255, 20, 55, 0.8));
       animation: pulseHeartBtn 3s ease-in-out infinite;
     }
 
@@ -1315,27 +1338,28 @@
     .site-footer {
       position: relative;
       z-index: 4;
-      max-width: 1200px;
+      max-width: 1220px;
       margin: 0 auto;
-      padding: 20px 18px 32px;
+      padding: 18px 20px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      color: #dce8ff;
-      font-size: 0.84rem;
+      color: #e2eeff;
+      font-size: 0.86rem;
       text-align: center;
+      background: rgba(2, 6, 18, 0.95);
     }
 
     .footer-line {
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
     }
 
     .footer-corner-heart {
-      color: var(--neon-red);
-      font-size: 1.4rem;
+      width: 28px;
+      height: 26px;
       filter: drop-shadow(0 0 10px var(--neon-red));
       flex-shrink: 0;
     }
@@ -1421,22 +1445,23 @@
     }
 
     /* ==========================================================================
-       RESPONSIVIDADE PARA TABLETS E CELULARES
+       RESPONSIVIDADE (MANTÉM O LAYOUT DE 3 COLUNAS NO MODO COMPUTADOR DO CHROME
+       E ADAPTA PERFEITAMENTE NO CELULAR EM PÉ)
        ========================================================================== */
-    @media (max-width: 1024px) {
+    @media (max-width: 860px) {
       .hero-declaration-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 32px;
       }
 
       .memories-music-grid {
         grid-template-columns: 1fr;
-        gap: 42px;
+        gap: 38px;
       }
 
       .forever-grid {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 26px;
       }
 
       .timeline-line {
@@ -1445,7 +1470,7 @@
 
       .timeline-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
+        gap: 16px;
       }
 
       .timeline-step:last-child {
@@ -1484,7 +1509,7 @@
       }
 
       .scene-band {
-        padding: 40px 14px 56px;
+        padding: 38px 14px 54px;
       }
 
       .section-title-line {
@@ -1515,8 +1540,8 @@
 
       .timeline-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
-        max-width: 350px;
+        gap: 14px;
+        max-width: 340px;
         margin: 0 auto;
       }
 
@@ -1526,7 +1551,7 @@
 
       .timeline-card {
         min-height: auto;
-        padding: 16px 14px;
+        padding: 15px 14px;
       }
 
       .scroll-letter-wrapper {
@@ -1538,9 +1563,9 @@
       }
 
       .heart-counter-card {
-        max-width: 300px;
-        min-height: 280px;
-        padding: 28px 12px 34px;
+        max-width: 310px;
+        min-height: 290px;
+        padding: 30px 14px 38px;
       }
     }
   </style>
@@ -1555,68 +1580,185 @@
 
   <canvas id="universe-canvas"></canvas>
 
-  <!-- Definições SVG Globais -->
-  <svg width="0" height="0" style="position:absolute">
+  <!-- ==========================================================================
+       BIBLIOTECA DE ARTE REALISTA (LUA TEXTURIZADA, ROSAS ESCULPIDAS, CASAL E NEON)
+       ========================================================================== -->
+  <svg width="0" height="0" style="position:absolute; width:0; height:0; overflow:hidden;">
     <defs>
-      <radialGradient id="moonGrad" cx="38%" cy="35%" r="65%">
+      <!-- Gradientes da Lua Cheia Realista -->
+      <radialGradient id="moonBaseGrad" cx="35%" cy="30%" r="70%">
         <stop offset="0%" stop-color="#ffffff" />
-        <stop offset="45%" stop-color="#e3f0ff" />
-        <stop offset="80%" stop-color="#a8cbf5" />
-        <stop offset="100%" stop-color="#6fa0e0" />
+        <stop offset="32%" stop-color="#f2f8ff" />
+        <stop offset="68%" stop-color="#bad8ff" />
+        <stop offset="90%" stop-color="#7aa9eb" />
+        <stop offset="100%" stop-color="#5383cc" />
       </radialGradient>
 
-      <symbol id="full-moon-symbol" viewBox="0 0 200 200">
-        <circle cx="100" cy="100" r="92" fill="url(#moonGrad)" />
-        <ellipse cx="72" cy="65" rx="26" ry="18" fill="#8bb4e8" opacity="0.45" transform="rotate(-15 72 65)" />
-        <ellipse cx="128" cy="78" rx="32" ry="22" fill="#7da8df" opacity="0.4" transform="rotate(20 128 78)" />
-        <circle cx="115" cy="128" r="26" fill="#88b2e6" opacity="0.38" />
-        <circle cx="64" cy="122" r="19" fill="#7aa5dc" opacity="0.42" />
-        <circle cx="142" cy="118" r="11" fill="#6b96cf" opacity="0.45" />
-        <circle cx="88" cy="44" r="9" fill="#95bced" opacity="0.5" />
-        <circle cx="52" cy="90" r="12" fill="#82aee3" opacity="0.38" />
-        <circle cx="102" cy="96" r="16" fill="#7aa6de" opacity="0.3" />
-      </symbol>
-
-      <radialGradient id="heart3dGrad" cx="35%" cy="30%" r="70%">
-        <stop offset="0%" stop-color="#ff8da1" />
-        <stop offset="28%" stop-color="#ff1e42" />
-        <stop offset="75%" stop-color="#b80024" />
-        <stop offset="100%" stop-color="#5e0010" />
+      <radialGradient id="craterSeaGrad" cx="50%" cy="50%" r="55%">
+        <stop offset="0%" stop-color="#4e79bf" stop-opacity="0.65" />
+        <stop offset="65%" stop-color="#6b96d6" stop-opacity="0.38" />
+        <stop offset="100%" stop-color="#9cc0f2" stop-opacity="0" />
       </radialGradient>
 
-      <symbol id="heart-3d-symbol" viewBox="0 0 100 90">
-        <path d="M50 84 C50 84 8 56 8 29 C8 13 21 4 35 4 C44 4 50 11 50 17 C50 11 56 4 65 4 C79 4 92 13 92 29 C92 56 50 84 50 84 Z" fill="url(#heart3dGrad)" />
-        <ellipse cx="29" cy="22" rx="10" ry="6" fill="#ffffff" opacity="0.45" transform="rotate(-25 29 22)" />
+      <!-- Lua Cheia Realista com Mares Lunares e Raios de Cratera (Igual à Imagem 2) -->
+      <symbol id="full-moon-symbol" viewBox="0 0 240 240">
+        <!-- Halo externo suave -->
+        <circle cx="120" cy="120" r="116" fill="rgba(165, 215, 255, 0.18)" />
+        <!-- Esfera principal da Lua -->
+        <circle cx="120" cy="120" r="108" fill="url(#moonBaseGrad)" />
+
+        <!-- Mares Lunares Orgânicos (Mare Imbrium, Serenitatis, Tranquillitatis) -->
+        <path d="M58 68 C74 44, 114 46, 128 68 C142 88, 118 118, 92 114 C64 110, 44 90, 58 68 Z" fill="url(#craterSeaGrad)" />
+        <path d="M122 66 C146 56, 178 72, 184 98 C190 124, 162 146, 138 136 C116 126, 102 78, 122 66 Z" fill="url(#craterSeaGrad)" />
+        <path d="M132 126 C158 118, 194 134, 192 162 C190 186, 158 198, 136 184 C118 172, 112 134, 132 126 Z" fill="url(#craterSeaGrad)" />
+        <path d="M44 108 C66 98, 96 116, 98 144 C100 174, 72 194, 50 178 C32 164, 26 118, 44 108 Z" fill="url(#craterSeaGrad)" />
+        <path d="M84 140 C106 132, 134 148, 128 172 C122 194, 92 204, 76 188 C62 174, 66 146, 84 140 Z" fill="url(#craterSeaGrad)" opacity="0.7" />
+
+        <!-- Manchas secundárias de textura lunar -->
+        <ellipse cx="95" cy="78" rx="22" ry="15" fill="#517bc2" opacity="0.32" transform="rotate(-18 95 78)" />
+        <ellipse cx="152" cy="96" rx="26" ry="18" fill="#4872b8" opacity="0.35" transform="rotate(24 152 96)" />
+        <ellipse cx="68" cy="145" rx="24" ry="17" fill="#527dc4" opacity="0.32" transform="rotate(12 68 145)" />
+        <ellipse cx="156" cy="158" rx="22" ry="16" fill="#4c76bd" opacity="0.36" transform="rotate(-22 156 158)" />
+
+        <!-- Cratera Tycho Brilhante com Raios Lunares no polo inferior -->
+        <g opacity="0.65">
+          <line x1="126" y1="186" x2="72" y2="128" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="6 4" />
+          <line x1="126" y1="186" x2="178" y2="132" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="8 5" />
+          <line x1="126" y1="186" x2="112" y2="92" stroke="#ffffff" stroke-width="1" stroke-dasharray="5 6" />
+          <line x1="126" y1="186" x2="54" y2="168" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="7 4" />
+          <circle cx="126" cy="186" r="7" fill="#ffffff" />
+          <circle cx="126" cy="186" r="12" fill="none" stroke="#e3f0ff" stroke-width="1.5" opacity="0.8" />
+        </g>
+
+        <!-- Crateras com bordas iluminadas -->
+        <circle cx="82" cy="54" r="9" fill="#6d97d9" stroke="#ffffff" stroke-width="1.2" opacity="0.65" />
+        <circle cx="148" cy="62" r="11" fill="#638ed1" stroke="#f0f7ff" stroke-width="1.2" opacity="0.6" />
+        <circle cx="114" cy="112" r="13" fill="#5e89cc" stroke="#e6f2ff" stroke-width="1.4" opacity="0.55" />
+        <circle cx="62" cy="102" r="8" fill="#6892d4" stroke="#ffffff" stroke-width="1" opacity="0.65" />
+        <circle cx="182" cy="126" r="10" fill="#5882c4" stroke="#e6f2ff" stroke-width="1.2" opacity="0.6" />
+        <circle cx="96" cy="166" r="11" fill="#628cd0" stroke="#f2f8ff" stroke-width="1.2" opacity="0.55" />
+
+        <!-- Anel de brilho interno da esfera -->
+        <circle cx="120" cy="120" r="107" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.85" />
       </symbol>
 
-      <radialGradient id="roseGrad" cx="40%" cy="40%" r="60%">
-        <stop offset="0%" stop-color="#ff2e55" />
-        <stop offset="55%" stop-color="#a80322" />
-        <stop offset="100%" stop-color="#3d000b" />
+      <!-- Estrela de 4 Pontas com Flare (Idêntica aos brilhos da Imagem 2) -->
+      <symbol id="star-flare-symbol" viewBox="0 0 60 60">
+        <radialGradient id="flareGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+          <stop offset="35%" stop-color="#b8dcff" stop-opacity="0.65" />
+          <stop offset="100%" stop-color="#4da3ff" stop-opacity="0" />
+        </radialGradient>
+        <circle cx="30" cy="30" r="24" fill="url(#flareGlow)" />
+        <path d="M30 2 Q30 30 58 30 Q30 30 30 58 Q30 30 2 30 Q30 30 30 2 Z" fill="#ffffff" />
+        <path d="M14 14 Q30 30 46 14 Q30 30 46 46 Q30 30 14 46 Q30 30 14 14 Z" fill="#d8ecff" opacity="0.7" />
+      </symbol>
+
+      <!-- Coração 3D Realista Envernizado -->
+      <radialGradient id="heart3dGrad" cx="32%" cy="28%" r="72%">
+        <stop offset="0%" stop-color="#ffb3c1" />
+        <stop offset="18%" stop-color="#ff2a55" />
+        <stop offset="58%" stop-color="#c90028" />
+        <stop offset="88%" stop-color="#6b0013" />
+        <stop offset="100%" stop-color="#380008" />
       </radialGradient>
 
-      <symbol id="corner-roses-symbol" viewBox="0 0 260 140">
-        <path d="M10 130 Q40 90 80 110 Q50 135 10 130 Z" fill="#0d2e1b" />
-        <path d="M70 135 Q110 85 160 115 Q120 140 70 135 Z" fill="#0a2415" />
-        <path d="M15 95 Q55 60 95 85 Q55 110 15 95 Z" fill="#123822" />
-        <g transform="translate(38, 95)">
-          <circle cx="0" cy="0" r="32" fill="url(#roseGrad)" />
-          <path d="M-18 -8 Q0 -26 18 -8 Q24 12 0 20 Q-22 12 -18 -8 Z" fill="#d90429" opacity="0.7" />
-          <path d="M-10 -4 Q0 -14 10 -4 Q12 6 0 10 Q-12 6 -10 -4 Z" fill="#ff4d6d" opacity="0.6" />
-        </g>
-        <g transform="translate(95, 108)">
-          <circle cx="0" cy="0" r="28" fill="url(#roseGrad)" />
-          <path d="M-15 -6 Q0 -22 15 -6 Q20 10 0 16 Q-18 10 -15 -6 Z" fill="#c90426" opacity="0.75" />
-        </g>
-        <g transform="translate(22, 52)">
-          <circle cx="0" cy="0" r="22" fill="url(#roseGrad)" />
-          <path d="M-12 -5 Q0 -16 12 -5 Q14 8 0 12 Q-14 8 -12 -5 Z" fill="#e6193c" opacity="0.7" />
-        </g>
-        <g transform="translate(148, 120)">
-          <circle cx="0" cy="0" r="22" fill="url(#roseGrad)" />
-        </g>
+      <symbol id="heart-3d-symbol" viewBox="0 0 100 92">
+        <path d="M50 86 C50 86 6 58 6 29 C6 12 20 3 35 3 C44 3 50 10 50 17 C50 10 56 3 65 3 C80 3 94 12 94 29 C94 58 50 86 50 86 Z"
+              fill="url(#heart3dGrad)"
+              stroke="#ff6b8b"
+              stroke-width="1.2" />
+        <!-- Reflexo de luz especular 3D -->
+        <path d="M16 26 C16 15 24 9 34 9 C38 9 41 11 42 13 C32 13 22 19 19 30 C17 30 16 28 16 26 Z" fill="#ffffff" opacity="0.65" />
+        <ellipse cx="74" cy="18" rx="7" ry="3.5" fill="#ffffff" opacity="0.35" transform="rotate(28 74 18)" />
       </symbol>
 
+      <!-- Coração Neon Brilhante para Títulos e Marcadores -->
+      <symbol id="neon-heart-icon" viewBox="0 0 60 56">
+        <path d="M30 50 C30 50 5 34 5 17 C5 7 13 2 21 2 C26 2 30 6 30 10 C30 6 34 2 39 2 C47 2 55 7 55 17 C55 34 30 50 30 50 Z"
+              fill="rgba(255, 20, 60, 0.35)"
+              stroke="#ff8da3"
+              stroke-width="3.5" />
+        <path d="M30 50 C30 50 5 34 5 17 C5 7 13 2 21 2 C26 2 30 6 30 10 C30 6 34 2 39 2 C47 2 55 7 55 17 C55 34 30 50 30 50 Z"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="1.2" />
+      </symbol>
+
+      <!-- Rosa Vermelha Esculpida Pétala por Pétala (Alta Definição) -->
+      <linearGradient id="petalLight" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff4769" />
+        <stop offset="45%" stop-color="#d40026" />
+        <stop offset="85%" stop-color="#730012" />
+        <stop offset="100%" stop-color="#2e0005" />
+      </linearGradient>
+
+      <linearGradient id="petalDeep" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#240004" />
+        <stop offset="50%" stop-color="#9e001c" />
+        <stop offset="90%" stop-color="#ff1e46" />
+        <stop offset="100%" stop-color="#ff758f" />
+      </linearGradient>
+
+      <linearGradient id="leafRealistic" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#234f2e" />
+        <stop offset="50%" stop-color="#102b18" />
+        <stop offset="100%" stop-color="#051209" />
+      </linearGradient>
+
+      <!-- Uma Rosa Realista Completa -->
+      <g id="single-realistic-rose">
+        <!-- Pétalas externas largas -->
+        <path d="M0 -42 C24 -46, 46 -24, 42 4 C38 28, 16 44, -6 42 C-30 40, -46 20, -42 -8 C-38 -32, -20 -40, 0 -42 Z" fill="url(#petalLight)" stroke="#4a000b" stroke-width="0.8" />
+        <path d="M-34 -18 C-18 -40, 18 -40, 34 -16 C42 8, 24 36, 0 38 C-26 38, -42 10, -34 -18 Z" fill="url(#petalDeep)" />
+        <!-- Camada intermediária de pétalas dobradas -->
+        <path d="M-26 -8 C-28 -26, -4 -34, 14 -26 C32 -18, 34 8, 18 22 C4 34, -22 24, -26 -8 Z" fill="url(#petalLight)" stroke="#ff6b86" stroke-width="0.5" />
+        <path d="M24 -10 C28 10, 12 28, -8 26 C-26 24, -30 2, -16 -14 C-4 -26, 20 -24, 24 -10 Z" fill="url(#petalDeep)" stroke="#ff4d6d" stroke-width="0.5" />
+        <!-- Pétalas internas em espiral -->
+        <path d="M-16 2 C-18 -14, 0 -22, 14 -12 C24 -2, 16 16, 0 18 C-12 18, -15 10, -16 2 Z" fill="url(#petalLight)" stroke="#ff8da3" stroke-width="0.6" />
+        <path d="M-8 -4 C-6 -14, 8 -14, 12 -4 C16 6, 4 14, -4 10 C-12 6, -10 2, -8 -4 Z" fill="url(#petalDeep)" />
+        <!-- Miolo em espiral da rosa -->
+        <path d="M-4 -2 C-2 -7, 5 -7, 6 -1 C7 4, 1 7, -3 4 C-6 2, -5 0, -4 -2 Z" fill="#3d0008" stroke="#ff758f" stroke-width="0.7" />
+      </g>
+
+      <!-- Buquê Completo de Rosas Vermelhas Realistas para os Cantos -->
+      <symbol id="corner-roses-symbol" viewBox="0 0 320 180">
+        <!-- Folhagem realista ao fundo com nervuras -->
+        <g fill="url(#leafRealistic)" stroke="#2d663b" stroke-width="0.8">
+          <path d="M8 105 Q35 55 88 72 Q55 112 8 105 Z" />
+          <line x1="12" y1="102" x2="78" y2="75" stroke="#397d49" stroke-width="1" />
+          <path d="M75 88 Q125 45 175 78 Q130 115 75 88 Z" />
+          <path d="M145 125 Q205 92 255 132 Q195 165 145 125 Z" />
+          <path d="M2 58 Q28 22 65 44 Q38 72 2 58 Z" />
+          <path d="M185 152 Q245 128 295 168 Q235 185 185 152 Z" />
+        </g>
+
+        <!-- Botões de rosa e pétalas soltas -->
+        <use href="#single-realistic-rose" transform="translate(26, 78) scale(0.55) rotate(-25)" />
+        <use href="#single-realistic-rose" transform="translate(92, 92) scale(0.62) rotate(18)" />
+        <use href="#single-realistic-rose" transform="translate(215, 156) scale(0.58) rotate(35)" />
+        <use href="#single-realistic-rose" transform="translate(168, 128) scale(0.72) rotate(-12)" />
+        <use href="#single-realistic-rose" transform="translate(115, 142) scale(0.85) rotate(22)" />
+        <!-- Rosa principal grande em primeiro plano -->
+        <use href="#single-realistic-rose" transform="translate(48, 134) scale(1.05) rotate(-8)" />
+      </symbol>
+
+      <!-- Banco de Nuvens Noturnas Iluminadas pela Lua -->
+      <symbol id="night-clouds-band" viewBox="0 0 1200 420" preserveAspectRatio="none">
+        <radialGradient id="cloudLightGrad" cx="55%" cy="30%" r="60%">
+          <stop offset="0%" stop-color="#5da9ff" stop-opacity="0.45" />
+          <stop offset="45%" stop-color="#1c4e9c" stop-opacity="0.38" />
+          <stop offset="100%" stop-color="#051129" stop-opacity="0" />
+        </radialGradient>
+        <ellipse cx="660" cy="150" rx="520" ry="190" fill="url(#cloudLightGrad)" />
+        <!-- Camadas de nuvens suaves -->
+        <path d="M-40 340 Q80 250 210 290 Q320 220 460 280 Q600 210 740 275 Q880 215 1020 285 Q1130 245 1240 320 L1240 420 L-40 420 Z"
+              fill="rgba(14, 42, 95, 0.42)" />
+        <path d="M-40 375 Q140 295 290 340 Q450 275 610 335 Q780 270 930 340 Q1080 290 1240 365 L1240 420 L-40 420 Z"
+              fill="rgba(6, 20, 50, 0.68)" />
+      </symbol>
+
+      <!-- Placeholder Polaroid (Igual à Imagem 2 caso alguma foto não carregue) -->
       <symbol id="polaroid-placeholder" viewBox="0 0 200 200">
         <rect width="200" height="200" fill="#a8b0be" />
         <circle cx="62" cy="62" r="18" fill="#777f8e" />
@@ -1627,27 +1769,25 @@
   </svg>
 
   <!-- ==========================================================================
-       2. TELA INICIAL DE ENTRADA (SPLASH SCREEN)
+       2. TELA INICIAL DE ENTRADA (FIEL AO TOPO DA IMAGEM 2)
        ========================================================================== -->
   <div id="splash-screen">
-    <div class="night-clouds"></div>
+    <svg class="splash-clouds-svg"><use href="#night-clouds-band"></use></svg>
 
-    <svg class="floating-heart-3d" style="top:10%; left:8%; width:38px; height:35px;">
-      <use href="#heart-3d-symbol"></use>
-    </svg>
-    <svg class="floating-heart-3d" style="top:16%; right:10%; width:34px; height:31px; animation-delay:1.2s;">
-      <use href="#heart-3d-symbol"></use>
-    </svg>
-    <svg class="floating-heart-3d" style="bottom:20%; left:12%; width:30px; height:28px; animation-delay:0.6s;">
-      <use href="#heart-3d-symbol"></use>
-    </svg>
-    <svg class="floating-heart-3d" style="bottom:18%; right:12%; width:32px; height:30px; animation-delay:1.8s;">
-      <use href="#heart-3d-symbol"></use>
-    </svg>
+    <!-- Estrelas de 4 pontas brilhantes -->
+    <svg class="sparkle-star" style="top:14%; left:22%; width:38px; height:38px;"><use href="#star-flare-symbol"></use></svg>
+    <svg class="sparkle-star" style="top:28%; right:18%; width:32px; height:32px; animation-delay:1.2s;"><use href="#star-flare-symbol"></use></svg>
+    <svg class="sparkle-star" style="bottom:28%; left:16%; width:28px; height:28px; animation-delay:0.7s;"><use href="#star-flare-symbol"></use></svg>
+
+    <!-- Corações 3D flutuando -->
+    <svg class="floating-heart-3d" style="top:12%; left:8%; width:48px; height:44px;"><use href="#heart-3d-symbol"></use></svg>
+    <svg class="floating-heart-3d" style="top:16%; right:9%; width:42px; height:38px; animation-delay:1.2s;"><use href="#heart-3d-symbol"></use></svg>
+    <svg class="floating-heart-3d" style="bottom:24%; left:14%; width:34px; height:31px; animation-delay:0.6s;"><use href="#heart-3d-symbol"></use></svg>
+    <svg class="floating-heart-3d" style="bottom:22%; right:14%; width:36px; height:33px; animation-delay:1.8s;"><use href="#heart-3d-symbol"></use></svg>
 
     <div class="splash-inner">
       <div class="splash-moon-box">
-        <svg class="moon-svg-anim" viewBox="0 0 200 200">
+        <svg class="moon-svg-anim" viewBox="0 0 240 240">
           <use href="#full-moon-symbol"></use>
         </svg>
       </div>
@@ -1657,34 +1797,34 @@
       </h1>
 
       <button id="open-universe-btn" class="heart-open-btn" aria-label="Clique para abrir">
-        <svg class="heart-btn-svg" viewBox="0 0 220 195">
+        <svg class="heart-btn-svg" viewBox="0 0 230 200">
           <defs>
             <radialGradient id="bigHeartBtnGrad" cx="45%" cy="35%" r="65%">
-              <stop offset="0%" stop-color="#ff6b86" />
-              <stop offset="35%" stop-color="#ff143b" />
-              <stop offset="80%" stop-color="#9e001c" />
-              <stop offset="100%" stop-color="#4d000c" />
+              <stop offset="0%" stop-color="#ff758f" />
+              <stop offset="32%" stop-color="#ff143b" />
+              <stop offset="78%" stop-color="#a3001d" />
+              <stop offset="100%" stop-color="#4a000b" />
             </radialGradient>
           </defs>
-          <path d="M110 182 C110 182 14 122 14 62 C14 26 43 6 76 6 C96 6 110 20 110 34 C110 20 124 6 144 6 C177 6 206 26 206 62 C206 122 110 182 110 182 Z"
+          <!-- Halo duplo neon -->
+          <path d="M115 188 C115 188 14 126 14 64 C14 26 44 6 78 6 C99 6 115 21 115 36 C115 21 131 6 152 6 C186 6 216 26 216 64 C216 126 115 188 115 188 Z"
                 fill="url(#bigHeartBtnGrad)"
-                stroke="#ff8da3"
-                stroke-width="3" />
-          <line x1="68" y1="145" x2="96" y2="145" stroke="#ffdbe2" stroke-width="1.2" opacity="0.8" />
-          <line x1="124" y1="145" x2="152" y2="145" stroke="#ffdbe2" stroke-width="1.2" opacity="0.8" />
-          <path d="M110 153 C110 153 101 146 101 141 C101 138 104 136 106.5 136 C108.5 136 110 137.5 110 139 C110 137.5 111.5 136 113.5 136 C116 136 119 138 119 141 C119 146 110 153 110 153 Z"
-                fill="none" stroke="#ffffff" stroke-width="1.5" />
+                stroke="#ff9ebb"
+                stroke-width="3.5" />
+          <!-- Reflexo superior 3D -->
+          <path d="M30 56 C30 34 50 18 76 18 C86 18 95 22 101 28 C74 26 46 38 36 62 C32 62 30 59 30 56 Z" fill="#ffffff" opacity="0.38" />
+          <!-- Ornamento interno idêntico à Imagem 2 -->
+          <line x1="70" y1="150" x2="99" y2="150" stroke="#ffdbe2" stroke-width="1.4" opacity="0.85" />
+          <line x1="131" y1="150" x2="160" y2="150" stroke="#ffdbe2" stroke-width="1.4" opacity="0.85" />
+          <path d="M115 159 C115 159 105 151 105 145 C105 141 108 139 111 139 C113 139 115 141 115 143 C115 141 117 139 119 139 C122 139 125 141 125 145 C125 151 115 159 115 159 Z"
+                fill="none" stroke="#ffffff" stroke-width="1.8" />
         </svg>
         <span class="heart-btn-label">Clique para abrir</span>
       </button>
     </div>
 
-    <svg class="corner-roses left" viewBox="0 0 260 140">
-      <use href="#corner-roses-symbol"></use>
-    </svg>
-    <svg class="corner-roses right" viewBox="0 0 260 140">
-      <use href="#corner-roses-symbol"></use>
-    </svg>
+    <svg class="corner-roses left" viewBox="0 0 320 180"><use href="#corner-roses-symbol"></use></svg>
+    <svg class="corner-roses right" viewBox="0 0 320 180"><use href="#corner-roses-symbol"></use></svg>
   </div>
 
   <!-- ==========================================================================
@@ -1694,7 +1834,7 @@
     <div class="header-inner">
       <a href="#nosso-amor" class="brand-logo">
         <span>Jessica</span>
-        <span class="brand-heart">❤️</span>
+        <svg class="brand-heart-svg" viewBox="0 0 60 56"><use href="#neon-heart-icon"></use></svg>
         <span>Erick</span>
       </a>
 
@@ -1711,18 +1851,19 @@
   <main>
 
     <!-- ========================================================================
-         4 & 5. SEÇÃO PRINCIPAL (DECLARAÇÃO DE AMOR) + CONTADOR DENTRO DO CORAÇÃO
+         4 & 5. SEÇÃO PRINCIPAL (DECLARAÇÃO) + CASAL REALISTA NO PÍER + CONTADOR
          ======================================================================== -->
     <section id="nosso-amor" class="scene-band">
-      <svg class="floating-heart-3d" style="top:10%; left:3%; width:32px; height:29px;">
-        <use href="#heart-3d-symbol"></use>
-      </svg>
-      <svg class="floating-heart-3d" style="top:8%; right:4%; width:28px; height:25px; animation-delay:1.1s;">
-        <use href="#heart-3d-symbol"></use>
-      </svg>
+      <svg class="band-clouds-bg"><use href="#night-clouds-band"></use></svg>
+      <svg class="sparkle-star" style="top:12%; left:42%; width:32px; height:32px;"><use href="#star-flare-symbol"></use></svg>
+      <svg class="sparkle-star" style="top:18%; right:30%; width:28px; height:28px; animation-delay:1s;"><use href="#star-flare-symbol"></use></svg>
+
+      <svg class="floating-heart-3d" style="top:22%; left:2%; width:40px; height:36px;"><use href="#heart-3d-symbol"></use></svg>
+      <svg class="floating-heart-3d" style="top:14%; left:45%; width:28px; height:26px; animation-delay:1.1s;"><use href="#heart-3d-symbol"></use></svg>
+      <svg class="floating-heart-3d" style="top:20%; right:29%; width:30px; height:28px; animation-delay:0.5s;"><use href="#heart-3d-symbol"></use></svg>
 
       <div class="hero-declaration-grid reveal">
-        <!-- Declaração Principal -->
+        <!-- Coluna 1: Declaração Principal -->
         <div class="declaration-box">
           <h2 class="declaration-title">
             Meu amor, você é a parte mais bonita da minha vida.
@@ -1745,49 +1886,136 @@
           </a>
         </div>
 
-        <!-- Lua Grande + Casal no Píer -->
+        <!-- Coluna 2: Cena Realista Completa (Lua Cheia + Nuvens + Casal no Píer + Reflexo na Água) -->
         <div class="pier-scene-col">
-          <div class="pier-moon">
-            <svg class="moon-svg-anim" viewBox="0 0 200 200">
-              <use href="#full-moon-symbol"></use>
-            </svg>
-          </div>
+          <svg class="pier-scene-illustration" viewBox="0 0 420 400">
+            <defs>
+              <linearGradient id="waterSurface" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#17468a" stop-opacity="0.85" />
+                <stop offset="45%" stop-color="#0a224d" stop-opacity="0.95" />
+                <stop offset="100%" stop-color="#030a1c" stop-opacity="1" />
+              </linearGradient>
+              <radialGradient id="waterMoonGlow" cx="50%" cy="10%" r="65%">
+                <stop offset="0%" stop-color="#d4ebff" stop-opacity="0.85" />
+                <stop offset="40%" stop-color="#5da8ff" stop-opacity="0.45" />
+                <stop offset="100%" stop-color="#0a224d" stop-opacity="0" />
+              </radialGradient>
+            </defs>
 
-          <svg class="couple-pier-svg" viewBox="0 0 360 220">
-            <ellipse cx="180" cy="175" rx="140" ry="30" fill="rgba(95, 165, 255, 0.18)" />
-            <rect x="135" y="152" width="90" height="3" rx="1.5" fill="#cce6ff" opacity="0.6" />
-            <rect x="120" y="160" width="120" height="3" rx="1.5" fill="#99caff" opacity="0.5" />
-            <rect x="142" y="168" width="76" height="3" rx="1.5" fill="#cce6ff" opacity="0.4" />
-            <polygon points="35,215 95,148 265,148 325,215" fill="#060c1a" stroke="#1b3564" stroke-width="1" />
-            <line x1="78" y1="165" x2="282" y2="165" stroke="#18315e" stroke-width="2" />
-            <line x1="62" y1="184" x2="298" y2="184" stroke="#18315e" stroke-width="2.5" />
-            <line x1="45" y1="204" x2="315" y2="204" stroke="#18315e" stroke-width="3" />
-            <rect x="85" y="150" width="10" height="65" fill="#030710" />
-            <rect x="265" y="150" width="10" height="65" fill="#030710" />
-            <circle cx="156" cy="58" r="15" fill="#040814" />
-            <path d="M132 82 C132 72 176 72 180 84 L184 148 L128 148 Z" fill="#040814" />
-            <path d="M128 86 Q112 115 130 146" fill="none" stroke="#040814" stroke-width="12" stroke-linecap="round" />
-            <circle cx="192" cy="68" r="14" fill="#040814" />
-            <path d="M182 62 Q212 68 218 112 Q202 118 194 98 Z" fill="#040814" />
-            <path d="M174 90 C176 80 210 82 216 96 L226 148 L172 148 Z" fill="#040814" />
+            <!-- Nuvens suaves atrás da Lua -->
+            <path d="M10 220 Q90 170 170 205 Q250 165 330 205 Q380 185 410 220 L410 270 L10 270 Z" fill="rgba(16, 48, 108, 0.55)" />
+
+            <!-- Lua Cheia Realista Grande -->
+            <g transform="translate(95, 10)">
+              <use href="#full-moon-symbol" width="230" height="230" class="moon-svg-anim"></use>
+            </g>
+
+            <!-- Nuvens baixas no horizonte -->
+            <path d="M0 248 Q75 215 145 242 Q215 218 285 242 Q355 215 420 248 L420 275 L0 275 Z" fill="#071636" opacity="0.9" />
+
+            <!-- Lago Noturno Iluminado no Horizonte -->
+            <rect x="0" y="268" width="420" height="132" fill="url(#waterSurface)" rx="6" />
+            <ellipse cx="210" cy="295" rx="165" ry="52" fill="url(#waterMoonGlow)" />
+
+            <!-- Ondas brilhantes de reflexo da lua na água -->
+            <g fill="#e3f2ff" opacity="0.75">
+              <rect x="145" y="274" width="130" height="2.2" rx="1" />
+              <rect x="130" y="281" width="160" height="2.5" rx="1" opacity="0.85" />
+              <rect x="152" y="289" width="116" height="2.2" rx="1" />
+              <rect x="138" y="297" width="144" height="2" rx="1" opacity="0.65" />
+              <rect x="160" y="306" width="100" height="2.2" rx="1" opacity="0.55" />
+              <rect x="120" y="316" width="180" height="1.8" rx="0.9" opacity="0.4" />
+              <rect x="95" y="328" width="230" height="1.5" rx="0.7" opacity="0.3" />
+            </g>
+
+            <!-- Píer de Madeira Realista em Perspectiva -->
+            <g>
+              <!-- Pilares de madeira na água e sombra -->
+              <rect x="78" y="312" width="14" height="86" fill="#02050d" />
+              <rect x="328" y="312" width="14" height="86" fill="#02050d" />
+              <rect x="102" y="286" width="11" height="82" fill="#030712" />
+              <rect x="307" y="286" width="11" height="82" fill="#030712" />
+
+              <!-- Estrutura do deck -->
+              <polygon points="55,396 108,298 312,298 365,396" fill="#050b18" stroke="#274b82" stroke-width="1.2" />
+
+              <!-- Tábuas horizontais do píer com frestas iluminadas -->
+              <line x1="104" y1="306" x2="316" y2="306" stroke="#3b6bb0" stroke-width="1.8" />
+              <line x1="96" y1="319" x2="324" y2="319" stroke="#2c5491" stroke-width="2.2" />
+              <line x1="88" y1="334" x2="332" y2="334" stroke="#25487d" stroke-width="2.5" />
+              <line x1="78" y1="351" x2="342" y2="351" stroke="#1e3c6b" stroke-width="2.8" />
+              <line x1="68" y1="371" x2="352" y2="371" stroke="#183159" stroke-width="3.2" />
+              <line x1="58" y1="392" x2="362" y2="392" stroke="#122647" stroke-width="3.5" />
+
+              <!-- Postes laterais de amarração do píer -->
+              <rect x="72" y="330" width="16" height="58" rx="2" fill="#040914" stroke="#2b528c" stroke-width="1" />
+              <rect x="332" y="330" width="16" height="58" rx="2" fill="#040914" stroke="#2b528c" stroke-width="1" />
+            </g>
+
+            <!-- SILHUETA REALISTA DO CASAL SENTADO NO PÍER (IDÊNTICA À IMAGEM 2) -->
+            <g filter="drop-shadow(0 6px 14px rgba(0,0,0,0.95))">
+              <!-- Pernas do casal penduradas na borda do píer -->
+              <path d="M152 302 L148 346 L162 346 L168 302 Z" fill="#030711" />
+              <path d="M172 302 L170 348 L184 348 L186 302 Z" fill="#030711" />
+              <path d="M222 302 L218 342 L230 342 L235 302 Z" fill="#030711" />
+              <path d="M238 302 L236 344 L248 344 L250 302 Z" fill="#030711" />
+
+              <!-- Silhueta do Rapaz (Erick) sentado à esquerda -->
+              <!-- Cabeça, orelha e corte de cabelo masculino realista -->
+              <path d="M174 156 C182 152, 195 154, 199 164 C203 172, 202 184, 198 192 L195 202 L174 202 L172 190 C168 182, 167 162, 174 156 Z" fill="#040814" />
+              <!-- Tronco, ombros largos, camiseta e braço envolvendo a namorada -->
+              <path d="M142 222 C146 206, 162 198, 184 198 C204 198, 216 206, 222 222 L218 304 L146 304 C140 278, 138 242, 142 222 Z" fill="#040814" />
+              <!-- Braço esquerdo apoiado no píer -->
+              <path d="M144 220 C132 244, 128 274, 132 302 L146 302 L150 244 Z" fill="#040814" />
+              <!-- Contorno de luz lunar (Rim Light) no ombro e cabeça do rapaz -->
+              <path d="M174 156 C168 162, 168 180, 172 192 M166 200 C150 204, 142 214, 134 246" fill="none" stroke="#9ecaff" stroke-width="1.4" opacity="0.7" stroke-linecap="round" />
+
+              <!-- Silhueta da Moça (Jessica) inclinada no ombro dele -->
+              <!-- Cabeça inclinada com carinho -->
+              <ellipse cx="222" cy="186" rx="14" ry="16" transform="rotate(-16 222 186)" fill="#040814" />
+              <!-- Cabelos longos e ondulados caindo pelas costas com fios detalhados -->
+              <path d="M214 170 C230 166, 246 178, 254 202 C262 226, 266 254, 260 276 C252 272, 246 258, 244 242 C240 220, 226 196, 214 170 Z" fill="#040814" />
+              <path d="M252 198 C262 216, 268 242, 264 264" fill="none" stroke="#040814" stroke-width="2.5" stroke-linecap="round" />
+              <path d="M256 210 C266 228, 270 248, 267 268" fill="none" stroke="#6aaeff" stroke-width="1" opacity="0.55" />
+              <!-- Corpo e vestido/blusa acinturada sentada no píer -->
+              <path d="M204 214 C212 204, 236 206, 248 220 C258 236, 264 274, 272 304 L202 304 C200 274, 200 232, 204 214 Z" fill="#040814" />
+              <!-- Contorno de luz lunar na cabeça e braço da moça -->
+              <path d="M226 170 C238 172, 248 184, 255 206 C262 228, 265 256, 270 296" fill="none" stroke="#b3d7ff" stroke-width="1.3" opacity="0.7" stroke-linecap="round" />
+            </g>
           </svg>
         </div>
 
-        <!-- Contador do Nosso Amor (Horas, Minutos e Segundos posicionados dentro do coração) -->
+        <!-- Coluna 3: Contador do Nosso Amor (Com ornamentos superior e inferior fiéis à Imagem 2) -->
         <div class="counter-col">
           <div class="heart-counter-card">
-            <svg class="heart-counter-frame-svg" viewBox="0 0 340 330" preserveAspectRatio="none">
+            <svg class="heart-counter-frame-svg" viewBox="0 0 340 335" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="neonFrameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#ff6b88" />
-                  <stop offset="50%" stop-color="#ff1a40" />
-                  <stop offset="100%" stop-color="#ff4d6d" />
+                  <stop offset="0%" stop-color="#ff8fa6" />
+                  <stop offset="50%" stop-color="#ff143b" />
+                  <stop offset="100%" stop-color="#ff6b88" />
                 </linearGradient>
               </defs>
-              <path d="M170 305 C170 305 16 212 16 102 C16 40 66 12 116 12 C148 12 166 30 170 44 C174 30 192 12 224 12 C274 12 324 40 324 102 C324 212 170 305 170 305 Z"
-                    fill="rgba(8, 18, 44, 0.85)"
+              <!-- Fundo translúcido e borda dupla neon do coração -->
+              <path d="M170 302 C170 302 14 210 14 100 C14 38 64 12 115 12 C147 12 165 29 170 43 C175 29 193 12 225 12 C276 12 326 38 326 100 C326 210 170 302 170 302 Z"
+                    fill="rgba(6, 15, 38, 0.84)"
                     stroke="url(#neonFrameGrad)"
-                    stroke-width="3.5" />
+                    stroke-width="4" />
+              <path d="M170 296 C170 296 20 206 20 100 C20 43 67 18 115 18 C145 18 163 34 170 48 C177 34 195 18 225 18 C273 18 320 43 320 100 C320 206 170 296 170 296 Z"
+                    fill="none"
+                    stroke="#ffffff"
+                    stroke-width="1"
+                    opacity="0.65" />
+
+              <!-- Pequeno coração brilhante no topo central do coração maior -->
+              <path d="M170 50 C170 50 161 43 161 38 C161 35 164 33 166.5 33 C168.5 33 170 34.5 170 36 C170 34.5 171.5 33 173.5 33 C176 33 179 35 179 38 C179 43 170 50 170 50 Z"
+                    fill="#ff183f" stroke="#ffffff" stroke-width="1.2" />
+
+              <!-- Ornamento de coração e arabescos na ponta inferior do coração -->
+              <path d="M125 306 Q148 312 158 312" fill="none" stroke="#ff758f" stroke-width="1.5" />
+              <path d="M215 306 Q192 312 182 312" fill="none" stroke="#ff758f" stroke-width="1.5" />
+              <path d="M170 322 C170 322 159 314 159 308 C159 304 162 302 165.5 302 C168 302 170 304 170 306 C170 304 172 302 174.5 302 C178 302 181 304 181 308 C181 314 170 322 170 322 Z"
+                    fill="#ff183f" stroke="#ffdbe2" stroke-width="1.5" />
             </svg>
 
             <div class="counter-inner-content">
@@ -1821,32 +2049,34 @@
           <p class="counter-eternity-note">
             E ainda temos uma eternidade inteira pela frente.
           </p>
-          <div class="ornament-divider" style="max-width:180px; margin-top:6px;">
+          <div class="ornament-divider" style="max-width:190px; margin-top:4px;">
             <span class="line"></span>
-            <span class="heart-outline" style="font-size:0.95rem;">♡</span>
+            <span class="heart-outline" style="font-size:1rem;">♡</span>
             <span class="line"></span>
           </div>
         </div>
       </div>
 
-      <svg class="corner-roses left" viewBox="0 0 260 140">
-        <use href="#corner-roses-symbol"></use>
-      </svg>
+      <svg class="corner-roses left" viewBox="0 0 320 180"><use href="#corner-roses-symbol"></use></svg>
     </section>
 
     <!-- ========================================================================
-         6 & 7. GALERIA DE FOTOS (FOTOS INTEIRAS SEM CORTE) + MÚSICA LOCAL
+         6 & 7. GALERIA DE FOTOS (INTEIRAS SEM CORTE) + NOSSA MÚSICA
          ======================================================================== -->
     <section id="nossas-fotos" class="scene-band">
+      <svg class="band-clouds-bg"><use href="#night-clouds-band"></use></svg>
+      <svg class="floating-heart-3d" style="top:12%; left:3%; width:28px; height:26px;"><use href="#heart-3d-symbol"></use></svg>
+      <svg class="floating-heart-3d" style="bottom:16%; left:62%; width:30px; height:28px; animation-delay:1.4s;"><use href="#heart-3d-symbol"></use></svg>
+
       <div class="memories-music-grid reveal">
 
-        <!-- Galeria Polaroid (Com fotos inteiras) -->
+        <!-- Galeria Polaroid (Com fotos inteiras sem corte) -->
         <div>
           <div class="section-title-wrap">
             <span class="section-title-line"></span>
-            <span class="section-title-heart">❤️</span>
+            <svg class="section-title-heart" viewBox="0 0 60 56"><use href="#neon-heart-icon"></use></svg>
             <h2 class="section-title">Nossas Lembranças</h2>
-            <span class="section-title-heart">❤️</span>
+            <svg class="section-title-heart" viewBox="0 0 60 56"><use href="#neon-heart-icon"></use></svg>
             <span class="section-title-line right"></span>
           </div>
 
@@ -1893,7 +2123,7 @@
           </div>
         </div>
 
-        <!-- Seção 7: Nossa Música (Local) -->
+        <!-- Seção 7: Nossa Música (Com Casal Realista no Disco da Lua) -->
         <div id="nossa-musica" class="music-section-wrap">
           <h2 class="music-header-title">
             <span>🎵 Essa música sempre vai me lembrar você ❤️</span>
@@ -1902,13 +2132,21 @@
           <div class="music-card">
             <div class="music-top-row">
               <div id="music-disc" class="music-moon-disc">
-                <svg viewBox="0 0 120 120" width="100%" height="100%">
-                  <rect width="120" height="120" fill="#061538" />
-                  <circle cx="60" cy="54" r="44" fill="url(#moonGrad)" />
-                  <circle cx="52" cy="60" r="9" fill="#040a18" />
-                  <path d="M38 72 C38 66 62 66 64 74 L66 120 L36 120 Z" fill="#040a18" />
-                  <circle cx="69" cy="64" r="8.5" fill="#040a18" />
-                  <path d="M58 76 C60 69 78 69 82 78 L86 120 L56 120 Z" fill="#040a18" />
+                <svg viewBox="0 0 140 140" width="100%" height="100%">
+                  <rect width="140" height="140" fill="#04102b" />
+                  <g transform="translate(8, 6)">
+                    <use href="#full-moon-symbol" width="124" height="124"></use>
+                  </g>
+                  <!-- Silhueta realista do casal apaixonado diante da lua no disco -->
+                  <g fill="#030712">
+                    <!-- Rapaz -->
+                    <path d="M52 54 C56 48, 66 50, 68 57 C70 63, 68 70, 64 74 L48 74 C47 66, 48 58, 52 54 Z" />
+                    <path d="M36 84 C40 74, 52 72, 66 74 L70 140 L32 140 Z" />
+                    <!-- Moça -->
+                    <path d="M74 60 C78 55, 88 57, 90 64 C94 74, 98 92, 95 106 C88 100, 84 86, 74 60 Z" />
+                    <circle cx="77" cy="65" r="9.5" />
+                    <path d="M64 84 C68 76, 84 78, 90 88 L98 140 L60 140 Z" />
+                  </g>
                 </svg>
               </div>
 
@@ -1927,496 +2165,4 @@
             <div class="music-progress-wrap">
               <span id="music-time-display" class="music-time">0:00 / 3:38</span>
               <div id="music-progress-bar" class="music-progress-bar" title="Toque para escolher o trecho da música">
-                <div id="music-progress-fill" class="music-progress-fill">
-                  <span class="music-progress-Fill-dot"></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="music-controls">
-              <button class="ctrl-btn" onclick="restartMusic()" title="Reiniciar música" aria-label="Reiniciar música">🔀</button>
-              <button class="ctrl-btn" onclick="seekMusic(-10)" title="Voltar 10 segundos" aria-label="Voltar 10 segundos">⏮</button>
-              <button id="play-pause-btn" class="ctrl-btn ctrl-play-main" onclick="toggleMusic()" aria-label="Reproduzir ou pausar">▶</button>
-              <button class="ctrl-btn" onclick="seekMusic(10)" title="Avançar 10 segundos" aria-label="Avançar 10 segundos">⏭</button>
-              <button id="mute-btn" class="ctrl-btn" onclick="toggleMute()" title="Ativar ou desativar som" aria-label="Ativar ou desativar som">🔊</button>
-            </div>
-
-            <div class="volume-control-row">
-              <span class="volume-label">🔈 Volume</span>
-              <input id="volume-slider" class="volume-slider" type="range" min="0" max="1" step="0.02" value="1" aria-label="Volume da música" />
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         8. NOSSA HISTÓRIA — LINHA DO TEMPO
-         ======================================================================== -->
-    <section id="nossa-historia" class="scene-band">
-      <div class="section-title-wrap reveal">
-        <span class="section-title-line"></span>
-        <span class="section-title-heart">❤️</span>
-        <h2 class="section-title">Uma história que ainda está sendo escrita</h2>
-        <span class="section-title-heart">❤️</span>
-        <span class="section-title-line right"></span>
-      </div>
-
-      <div class="timeline-container reveal">
-        <div class="timeline-line"></div>
-
-        <div class="timeline-grid">
-          <div class="timeline-step">
-            <div class="timeline-heart-marker">❤️</div>
-            <div class="timeline-mini-icon">📅</div>
-            <div class="timeline-card">
-              <div class="timeline-card-title">O dia em que tudo começou</div>
-              <div class="timeline-card-date">10/04/2025</div>
-              <div class="timeline-card-desc">O início do nosso sonho mais lindo.</div>
-            </div>
-          </div>
-
-          <div class="timeline-step">
-            <div class="timeline-heart-marker">❤️</div>
-            <div class="timeline-mini-icon">📷</div>
-            <div class="timeline-card">
-              <div class="timeline-card-title">Nossas primeiras lembranças</div>
-              <div class="timeline-card-desc">Cada sorriso e olhar que guardo no peito.</div>
-            </div>
-          </div>
-
-          <div class="timeline-step">
-            <div class="timeline-heart-marker">❤️</div>
-            <div class="timeline-mini-icon">✨</div>
-            <div class="timeline-card">
-              <div class="timeline-card-title">Os momentos que se tornaram especiais</div>
-              <div class="timeline-card-desc">A nossa cumplicidade crescendo a cada dia.</div>
-            </div>
-          </div>
-
-          <div class="timeline-step">
-            <div class="timeline-heart-marker">❤️</div>
-            <div class="timeline-mini-icon">⭐</div>
-            <div class="timeline-card">
-              <div class="timeline-card-title">Os sonhos que estamos construindo</div>
-              <div class="timeline-card-desc">Planos feitos com amor, carinho e união.</div>
-            </div>
-          </div>
-
-          <div class="timeline-step">
-            <div class="timeline-heart-marker">❤️</div>
-            <div class="timeline-mini-icon">∞</div>
-            <div class="timeline-card">
-              <div class="timeline-card-title">Tudo o que ainda vamos viver</div>
-              <div class="timeline-card-desc">Uma vida inteira de amor ao seu lado.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         9. MENSAGEM ESPECIAL PARA JESSICA
-         ======================================================================== -->
-    <section class="scene-band">
-      <div class="section-title-wrap reveal">
-        <span class="section-title-line"></span>
-        <span class="section-title-heart">❤️</span>
-        <h2 class="section-title">Uma mensagem do meu coração para você</h2>
-        <span class="section-title-heart">❤️</span>
-        <span class="section-title-line right"></span>
-      </div>
-
-      <div class="scroll-letter-wrapper reveal">
-        <div class="parchment-scroll">
-          <p class="parchment-text">
-            Jessica, talvez eu não consiga colocar em palavras tudo o que sinto por você, mas quero que saiba que cada momento ao seu lado é especial. Você faz parte dos meus sonhos, dos meus planos e de tudo aquilo que desejo construir. Obrigado por estar comigo, por compartilhar sua vida comigo e por fazer meu coração sentir algo tão bonito. Eu escolheria você de novo, em cada vida, em cada universo e em cada versão da nossa história. Eu te amo, meu amor.
-          </p>
-          <div class="parchment-signature">
-            <span>♡</span>
-            <span>Eu te amo!</span>
-          </div>
-        </div>
-      </div>
-
-      <svg class="corner-roses left" viewBox="0 0 260 140">
-        <use href="#corner-roses-symbol"></use>
-      </svg>
-      <svg class="corner-roses right" viewBox="0 0 260 140">
-        <use href="#corner-roses-symbol"></use>
-      </svg>
-    </section>
-
-    <!-- ========================================================================
-         10. SEÇÃO FINAL "PARA SEMPRE"
-         ======================================================================== -->
-    <section id="para-sempre" class="scene-band">
-      <div class="forever-grid reveal">
-
-        <div class="forever-left-scene">
-          <svg class="forever-left-svg" viewBox="0 0 320 270">
-            <g transform="translate(15, 15)">
-              <use href="#full-moon-symbol" width="205" height="205" style="filter: drop-shadow(0 0 25px rgba(170,215,255,0.85));"></use>
-            </g>
-
-            <path d="M260 148 C260 148 225 122 225 98 C225 84 236 75 248 75 C255 75 260 81 260 87 C260 81 265 75 272 75 C284 75 295 84 295 98 C295 122 260 148 260 148 Z"
-                  fill="none"
-                  stroke="#a8dcff"
-                  stroke-width="3"
-                  stroke-dasharray="4 2"
-                  style="filter: drop-shadow(0 0 10px #5bb2ff);" />
-
-            <g transform="translate(68, 68)">
-              <circle cx="38" cy="24" r="15" fill="#030712" />
-              <path d="M14 48 C16 38 54 38 58 50 L62 195 L10 195 Z" fill="#030712" />
-              <circle cx="68" cy="32" r="14" fill="#030712" />
-              <path d="M68 24 Q94 34 98 82 Q82 86 74 64 Z" fill="#030712" />
-              <path d="M48 56 C52 46 82 48 88 64 L112 195 L42 195 Z" fill="#030712" />
-            </g>
-          </svg>
-        </div>
-
-        <div class="forever-center-content">
-          <p class="forever-quote">
-            Não importa quantos dias passem, meu lugar favorito sempre será ao seu lado.
-          </p>
-
-          <div class="forever-names">
-            <span>Jessica</span>
-            <span class="brand-heart" style="font-size:clamp(2rem, 6vw, 2.8rem);">❤️</span>
-            <span>Erick</span>
-          </div>
-
-          <p class="forever-date">
-            10/04/2025 — O começo da nossa eternidade.
-          </p>
-
-          <div class="forever-pill-banner">
-            <span>Eu te amo, hoje, amanhã e para sempre.</span>
-            <span>❤️</span>
-          </div>
-        </div>
-
-        <div class="forever-right-infinity">
-          <svg class="infinity-svg" viewBox="0 0 280 140">
-            <defs>
-              <linearGradient id="infGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#ff2a55" />
-                <stop offset="50%" stop-color="#ffffff" />
-                <stop offset="100%" stop-color="#ff2a55" />
-              </linearGradient>
-            </defs>
-            <path d="M75 35 C30 35 20 105 75 105 C115 105 165 35 205 35 C260 35 250 105 205 105 C165 105 115 35 75 35 Z"
-                  fill="none"
-                  stroke="#ff1e42"
-                  stroke-width="10"
-                  stroke-linecap="round"
-                  opacity="0.6" />
-            <path d="M75 35 C30 35 20 105 75 105 C115 105 165 35 205 35 C260 35 250 105 205 105 C165 105 115 35 75 35 Z"
-                  fill="none"
-                  stroke="url(#infGrad)"
-                  stroke-width="4"
-                  stroke-linecap="round" />
-            <circle cx="42" cy="52" r="3" fill="#ffffff" />
-            <circle cx="140" cy="70" r="3.5" fill="#ffffff" />
-            <circle cx="235" cy="86" r="3" fill="#ffffff" />
-          </svg>
-        </div>
-
-      </div>
-
-      <svg class="corner-roses left" viewBox="0 0 260 140">
-        <use href="#corner-roses-symbol"></use>
-      </svg>
-      <svg class="corner-roses right" viewBox="0 0 260 140">
-        <use href="#corner-roses-symbol"></use>
-      </svg>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <span class="footer-corner-heart">♡</span>
-    <span class="footer-line"></span>
-    <span>Criado com muito amor por Erick ❤️</span>
-    <span class="footer-line"></span>
-    <span class="footer-corner-heart">♡</span>
-  </footer>
-
-  <!-- MODAL DE VISUALIZAÇÃO DAS FOTOS -->
-  <div id="photo-modal" onclick="closePhotoModal()">
-    <div class="modal-polaroid" onclick="event.stopPropagation()">
-      <button class="modal-close-btn" onclick="closePhotoModal()" aria-label="Fechar">✕</button>
-      <div class="modal-img-container">
-        <svg class="polaroid-placeholder-svg"><use href="#polaroid-placeholder"></use></svg>
-        <img id="modal-img" src="" alt="Foto ampliada" onerror="this.style.display='none'" />
-      </div>
-      <p id="modal-caption" class="modal-caption"></p>
-    </div>
-  </div>
-
-  <script>
-    /* ==========================================================================
-       1. CONTADOR DE TEMPO EM TEMPO REAL (DESDE 10/04/2025)
-       ========================================================================== */
-    const START_DATE = new Date(2025, 3, 10, 0, 0, 0);
-
-    function updateLoveCounter() {
-      const now = new Date();
-      let diffMs = now - START_DATE;
-      if (diffMs < 0) diffMs = 0;
-
-      const totalSeconds = Math.floor(diffMs / 1000);
-      const days = Math.floor(totalSeconds / (3600 * 24));
-      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-
-      document.getElementById('cnt-days').textContent = days;
-      document.getElementById('cnt-hours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('cnt-minutes').textContent = String(minutes).padStart(2, '0');
-      document.getElementById('cnt-seconds').textContent = String(seconds).padStart(2, '0');
-    }
-
-    updateLoveCounter();
-    setInterval(updateLoveCounter, 1000);
-
-    /* ==========================================================================
-       2. PLAYER DE ÁUDIO 100% LOCAL
-       ========================================================================== */
-    const audio = document.getElementById('couple-audio');
-    const playPauseBtn = document.getElementById('play-pause-btn');
-    const muteBtn = document.getElementById('mute-btn');
-    const volumeSlider = document.getElementById('volume-slider');
-    const progressFill = document.getElementById('music-progress-fill');
-    const progressBar = document.getElementById('music-progress-bar');
-    const timeDisplay = document.getElementById('music-time-display');
-    const musicEq = document.getElementById('music-eq');
-    const musicDisc = document.getElementById('music-disc');
-
-    const DEFAULT_DURATION = 218;
-
-    function formatTime(sec) {
-      if (!sec || isNaN(sec) || !isFinite(sec)) return '0:00';
-      const m = Math.floor(sec / 60);
-      const s = Math.floor(sec % 60);
-      return `${m}:${String(s).padStart(2, '0')}`;
-    }
-
-    function updatePlayerUI(playing) {
-      playPauseBtn.textContent = playing ? '⏸' : '▶';
-      musicEq.classList.toggle('active', playing);
-      musicDisc.classList.toggle('playing-spin', playing);
-    }
-
-    audio.addEventListener('play', () => { updatePlayerUI(true); });
-    audio.addEventListener('pause', () => { updatePlayerUI(false); });
-
-    audio.addEventListener('loadedmetadata', () => {
-      const total = audio.duration || DEFAULT_DURATION;
-      timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(total)}`;
-    });
-
-    audio.addEventListener('timeupdate', () => {
-      const current = audio.currentTime || 0;
-      const total = (audio.duration && isFinite(audio.duration)) ? audio.duration : DEFAULT_DURATION;
-      const pct = Math.min(100, (current / total) * 100);
-      progressFill.style.width = `${pct}%`;
-      timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
-    });
-
-    function toggleMusic() {
-      if (audio.paused) {
-        audio.play().catch(() => {});
-      } else {
-        audio.pause();
-      }
-    }
-
-    function restartMusic() {
-      audio.currentTime = 0;
-      audio.play().catch(() => {});
-    }
-
-    function seekMusic(offset) {
-      const total = (audio.duration && isFinite(audio.duration)) ? audio.duration : DEFAULT_DURATION;
-      audio.currentTime = Math.max(0, Math.min(total, (audio.currentTime || 0) + offset));
-    }
-
-    function toggleMute() {
-      audio.muted = !audio.muted;
-      muteBtn.textContent = audio.muted ? '🔇' : '🔊';
-      volumeSlider.value = audio.muted ? 0 : audio.volume;
-    }
-
-    volumeSlider.addEventListener('input', (e) => {
-      const val = parseFloat(e.target.value);
-      audio.volume = val;
-      audio.muted = (val === 0);
-      muteBtn.textContent = audio.muted ? '🔇' : '🔊';
-    });
-
-    function scrubAudio(clientX) {
-      const rect = progressBar.getBoundingClientRect();
-      const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-      const total = (audio.duration && isFinite(audio.duration)) ? audio.duration : DEFAULT_DURATION;
-      audio.currentTime = ratio * total;
-    }
-
-    progressBar.addEventListener('click', (e) => { scrubAudio(e.clientX); });
-    progressBar.addEventListener('touchstart', (e) => { if (e.touches.length > 0) scrubAudio(e.touches[0].clientX); }, { passive: true });
-    progressBar.addEventListener('touchmove', (e) => { if (e.touches.length > 0) scrubAudio(e.touches[0].clientX); }, { passive: true });
-
-    /* ==========================================================================
-       3. ABERTURA DA TELA INICIAL
-       ========================================================================== */
-    const openBtn = document.getElementById('open-universe-btn');
-    const splashScreen = document.getElementById('splash-screen');
-
-    openBtn.addEventListener('click', () => {
-      openBtn.classList.add('clicked-heart');
-      audio.play().catch(() => {});
-
-      setTimeout(() => {
-        splashScreen.classList.add('hidden-splash');
-        document.body.classList.remove('locked');
-      }, 500);
-    });
-
-    const navLinks = document.querySelectorAll('.main-nav a');
-    navLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        navLinks.forEach((l) => l.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
-
-    /* ==========================================================================
-       4. MODAL DE FOTOS POLAROID
-       ========================================================================== */
-    function openPhotoModal(imgSrc, captionText) {
-      const modal = document.getElementById('photo-modal');
-      const modalImg = document.getElementById('modal-img');
-      const modalCaption = document.getElementById('modal-caption');
-
-      modalImg.style.display = 'block';
-      modalImg.src = imgSrc;
-      modalCaption.textContent = captionText;
-      modal.classList.add('open');
-    }
-
-    function closePhotoModal() {
-      document.getElementById('photo-modal').classList.remove('open');
-    }
-
-    /* ==========================================================================
-       5. ANIMAÇÃO DE SURGIMENTO AO ROLAR A PÁGINA
-       ========================================================================== */
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    revealElements.forEach((el) => revealObserver.observe(el));
-
-    /* ==========================================================================
-       6. CANVAS: ESTRELAS PISCANDO + CHUVA DE CORAÇÕES
-       ========================================================================== */
-    const canvas = document.getElementById('universe-canvas');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-    let fallingHearts = [];
-
-    function initParticles() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      stars = [];
-      fallingHearts = [];
-
-      const starCount = window.innerWidth < 640 ? 70 : 130;
-      for (let i = 0; i < starCount; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.6 + 0.4,
-          alpha: Math.random(),
-          speed: Math.random() * 0.016 + 0.005
-        });
-      }
-
-      const heartCount = window.innerWidth < 640 ? 12 : 22;
-      for (let i = 0; i < heartCount; i++) {
-        fallingHearts.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 9 + 7,
-          speedY: Math.random() * 0.5 + 0.25,
-          swayAmp: Math.random() * 0.7 + 0.25,
-          swaySpeed: Math.random() * 0.02 + 0.01,
-          angle: Math.random() * Math.PI * 2,
-          opacity: Math.random() * 0.45 + 0.3
-        });
-      }
-    }
-
-    window.addEventListener('resize', initParticles);
-    initParticles();
-
-    function drawMiniHeart(x, y, size, opacity) {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.beginPath();
-      const topCurveHeight = size * 0.3;
-      ctx.moveTo(0, topCurveHeight);
-      ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
-      ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, (size + topCurveHeight) / 1.4, 0, size);
-      ctx.bezierCurveTo(0, (size + topCurveHeight) / 1.4, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
-      ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
-      ctx.closePath();
-
-      ctx.fillStyle = `rgba(255, 38, 78, ${opacity})`;
-      ctx.shadowColor = 'rgba(255, 30, 66, 0.75)';
-      ctx.shadowBlur = 6;
-      ctx.fill();
-      ctx.restore();
-    }
-
-    function animateUniverse() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (const s of stars) {
-        s.alpha += s.speed;
-        if (s.alpha > 1 || s.alpha < 0.15) s.speed = -s.speed;
-
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(225, 240, 255, ${Math.max(0.1, Math.min(1, s.alpha))})`;
-        ctx.fill();
-      }
-
-      for (const h of fallingHearts) {
-        h.y += h.speedY;
-        h.angle += h.swaySpeed;
-        h.x += Math.sin(h.angle) * h.swayAmp;
-
-        if (h.y > canvas.height + 20) {
-          h.y = -20;
-          h.x = Math.random() * canvas.width;
-        }
-
-        drawMiniHeart(h.x, h.y, h.size, h.opacity);
-      }
-
-      requestAnimationFrame(animateUniverse);
-    }
-
-    animateUniverse();
-  </script>
-</body>
-</html>
+                <div id="music-progress-fill"
