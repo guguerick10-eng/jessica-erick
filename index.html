@@ -57,7 +57,7 @@
       height: 100vh;
     }
 
-    img, svg, video, iframe {
+    img, svg {
       max-width: 100%;
       display: block;
     }
@@ -121,7 +121,6 @@
       45% { transform: scale(1.1); }
     }
 
-    /* Títulos de seção centralizados e responsivos */
     .section-title-wrap {
       display: flex;
       align-items: center;
@@ -174,7 +173,6 @@
       transform: translateY(0);
     }
 
-    /* Rosas nos cantos inferiores sem cobrir o conteúdo */
     .corner-roses {
       position: absolute;
       bottom: -6px;
@@ -322,7 +320,7 @@
     }
 
     /* ==========================================================================
-       3. CABEÇALHO DO SITE (HEADER FIXO E PERFEITO NO CELULAR)
+       3. CABEÇALHO DO SITE (HEADER FIXO E RESPONSIVO)
        ========================================================================== */
     .site-header {
       position: sticky;
@@ -541,7 +539,6 @@
         inset 0 0 18px rgba(255, 100, 130, 0.65);
     }
 
-    /* Coluna Central: Lua Grande + Casal Sentado no Píer */
     .pier-scene-col {
       position: relative;
       display: flex;
@@ -567,7 +564,6 @@
       filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.95));
     }
 
-    /* Coluna Direita: Contador em Formato de Coração Neon (100% Fluido) */
     .counter-col {
       display: flex;
       flex-direction: column;
@@ -680,7 +676,7 @@
     }
 
     /* ==========================================================================
-       6 & 7. GALERIA DE FOTOS POLAROID + NOSSA MÚSICA E YOUTUBE
+       6 & 7. GALERIA DE FOTOS POLAROID + PLAYER DE MÚSICA LOCAL (SEM YOUTUBE)
        ========================================================================== */
     .memories-music-grid {
       position: relative;
@@ -688,7 +684,7 @@
       display: grid;
       grid-template-columns: 1.5fr 1fr;
       gap: 32px;
-      align-items: start;
+      align-items: center;
       width: 100%;
     }
 
@@ -778,7 +774,7 @@
       font-size: 0.82rem;
     }
 
-    /* Seção 7: Cartão Musical + Player de Vídeo YouTube Responsivo */
+    /* Seção 7: Cartão Musical Local */
     .music-section-wrap {
       display: flex;
       flex-direction: column;
@@ -803,15 +799,15 @@
 
     .music-card {
       width: 100%;
-      max-width: 410px;
-      background: linear-gradient(145deg, rgba(10, 28, 66, 0.9), rgba(4, 12, 32, 0.95));
-      border: 1px solid rgba(120, 175, 255, 0.38);
+      max-width: 400px;
+      background: linear-gradient(145deg, rgba(10, 28, 66, 0.92), rgba(4, 12, 32, 0.96));
+      border: 1px solid rgba(120, 175, 255, 0.4);
       border-radius: 20px;
-      padding: 20px 18px;
+      padding: 22px 20px;
       box-shadow:
-        0 12px 32px rgba(0, 0, 0, 0.8),
-        0 0 22px rgba(60, 130, 255, 0.25),
-        inset 0 0 18px rgba(255, 30, 66, 0.12);
+        0 12px 32px rgba(0, 0, 0, 0.85),
+        0 0 24px rgba(60, 130, 255, 0.28),
+        inset 0 0 18px rgba(255, 30, 66, 0.14);
       position: relative;
       overflow: hidden;
     }
@@ -819,19 +815,19 @@
     .music-top-row {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 14px;
+      gap: 16px;
+      margin-bottom: 16px;
     }
 
     .music-moon-disc {
-      width: 76px;
-      height: 76px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       flex-shrink: 0;
       position: relative;
       box-shadow: 0 0 18px rgba(135, 195, 255, 0.8);
       overflow: hidden;
-      border: 2px solid rgba(190, 225, 255, 0.7);
+      border: 2px solid rgba(190, 225, 255, 0.75);
     }
 
     .music-moon-disc.playing-spin {
@@ -840,7 +836,7 @@
 
     @keyframes discGlow {
       0% { box-shadow: 0 0 14px rgba(135, 195, 255, 0.7); }
-      100% { box-shadow: 0 0 26px rgba(255, 45, 85, 0.95), 0 0 36px rgba(135, 195, 255, 0.85); }
+      100% { box-shadow: 0 0 26px rgba(255, 45, 85, 0.95), 0 0 38px rgba(135, 195, 255, 0.85); }
     }
 
     .music-info {
@@ -850,14 +846,14 @@
     }
 
     .music-artist {
-      font-size: 0.98rem;
+      font-size: 1rem;
       font-weight: 700;
       color: #ffffff;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
     .music-track {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: #d0e2ff;
     }
 
@@ -892,27 +888,29 @@
       50% { height: 14px; }
     }
 
-    /* Barra de Progresso */
+    /* Barra de Progresso Interativa */
     .music-progress-wrap {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .music-time {
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       color: #b8cff8;
-      min-width: 66px;
+      min-width: 68px;
+      font-variant-numeric: tabular-nums;
     }
 
     .music-progress-bar {
       flex: 1;
       height: 8px;
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 10px;
       position: relative;
       cursor: pointer;
+      touch-action: none;
     }
 
     .music-progress-fill {
@@ -922,22 +920,21 @@
       border-radius: 10px;
       position: relative;
       box-shadow: 0 0 10px rgba(110, 185, 255, 0.9);
-      transition: width 0.15s linear;
     }
 
     .music-progress-Fill-dot {
       position: absolute;
-      right: -5px;
+      right: -6px;
       top: 50%;
       transform: translateY(-50%);
-      width: 12px;
-      height: 12px;
+      width: 13px;
+      height: 13px;
       background: #ffffff;
       border-radius: 50%;
       box-shadow: 0 0 10px #ffffff;
     }
 
-    /* Botões do Player com área de toque confortável (44px) */
+    /* Controles Principais de Reprodução */
     .music-controls {
       display: flex;
       align-items: center;
@@ -949,7 +946,7 @@
       background: none;
       border: none;
       color: #d8e6ff;
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       min-width: 44px;
       min-height: 44px;
       cursor: pointer;
@@ -966,12 +963,12 @@
     }
 
     .ctrl-play-main {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: #ffffff;
       color: #061330;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       box-shadow: 0 0 18px rgba(255, 255, 255, 0.85);
     }
 
@@ -980,52 +977,56 @@
       transform: scale(1.08);
     }
 
-    /* Vídeo do YouTube Responsivo (Proporção 16:9 sem sair da tela) */
-    .yt-video-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-      aspect-ratio: 16 / 9;
-      margin-top: 14px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #020612;
-      border: 1px solid rgba(130, 180, 255, 0.35);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
-    }
-
-    .yt-video-wrapper iframe {
-      position: absolute;
-      inset: 0;
-      width: 100% !important;
-      height: 100% !important;
-      border: 0;
-    }
-
-    .official-music-links {
+    /* Controle de Volume Deslizante Suave */
+    .volume-control-row {
       margin-top: 12px;
       padding-top: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
-      gap: 14px;
-      font-size: 0.78rem;
+      gap: 10px;
     }
 
-    .official-music-links a {
-      color: #a9c7ff;
-      text-decoration: none;
+    .volume-label {
+      font-size: 0.74rem;
+      color: #b8cff8;
       display: inline-flex;
       align-items: center;
-      min-height: 36px;
-      gap: 5px;
-      transition: color 0.2s;
+      gap: 4px;
     }
 
-    .official-music-links a:hover {
-      color: #ffffff;
-      text-decoration: underline;
+    .volume-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 130px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.22);
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--neon-red);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 8px var(--neon-red);
+      cursor: pointer;
+    }
+
+    .volume-slider::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--neon-red);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 8px var(--neon-red);
+      cursor: pointer;
     }
 
     /* ==========================================================================
@@ -1420,7 +1421,7 @@
     }
 
     /* ==========================================================================
-       RESPONSIVIDADE PARA TABLETS E CELULARES (Ex: Redmi Note 13 Pro 5G - 393px)
+       RESPONSIVIDADE PARA TABLETS E CELULARES (Ex: Redmi Note 13 Pro 5G)
        ========================================================================== */
     @media (max-width: 1024px) {
       .hero-declaration-grid {
@@ -1456,7 +1457,6 @@
     }
 
     @media (max-width: 640px) {
-      /* Cabeçalho Mobile Alinhado em Grade de 5 Colunas */
       .header-inner {
         flex-direction: column;
         padding: 8px 10px;
@@ -1491,7 +1491,6 @@
         max-width: 36px;
       }
 
-      /* Galeria Polaroid perfeitamente centralizada em 2 colunas no celular */
       .polaroid-gallery {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1514,7 +1513,6 @@
         transform: rotate(-1deg);
       }
 
-      /* Linha do tempo em 1 coluna limpa e legível no celular */
       .timeline-grid {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -1531,7 +1529,6 @@
         padding: 16px 14px;
       }
 
-      /* Carta pergaminho com margem segura para os rolos laterais */
       .scroll-letter-wrapper {
         padding: 6px 14px;
       }
@@ -1540,7 +1537,6 @@
         padding: 24px 20px 28px;
       }
 
-      /* Contador do amor ajustado para telas de 360px a 412px */
       .heart-counter-card {
         max-width: 320px;
         min-height: 300px;
@@ -1551,8 +1547,20 @@
 </head>
 <body class="locked">
 
-  <!-- Áudio local opcional (toca automaticamente se "musica.mp3" estiver na pasta) -->
-  <audio id="couple-audio" src="musica.mp3" preload="auto" loop></audio>
+  <!-- ==========================================================================
+       ÁUDIO LOCAL DO CASAL (SEM YOUTUBE / SEM LINKS EXTERNOS)
+       Basta salvar o arquivo de áudio enviado como "musica.mp3" na mesma pasta
+       do arquivo index.html no seu repositório do GitHub Pages.
+       ========================================================================== -->
+  <audio id="couple-audio" preload="auto" loop playsinline>
+    <source src="./musica.mp3" type="audio/mpeg" />
+    <source src="musica.mp3" type="audio/mpeg" />
+    <source src="./Amor Sem Medida.mp3" type="audio/mpeg" />
+    <source src="./amor-sem-medida.mp3" type="audio/mpeg" />
+    <source src="./musica.m4a" type="audio/mp4" />
+    <source src="./musica.ogg" type="audio/ogg" />
+    <source src="./musica.wav" type="audio/wav" />
+  </audio>
 
   <!-- Céu Estrelado e Chuva de Corações -->
   <canvas id="universe-canvas"></canvas>
@@ -1837,7 +1845,7 @@
     </section>
 
     <!-- ========================================================================
-         6 & 7. GALERIA DE FOTOS + NOSSA MÚSICA (COM YOUTUBE RESPONSIVO)
+         6 & 7. GALERIA DE FOTOS + NOSSA MÚSICA (100% LOCAL, SEM YOUTUBE)
          ======================================================================== -->
     <section id="nossas-fotos" class="scene-band">
       <div class="memories-music-grid reveal">
@@ -1852,7 +1860,6 @@
             <span class="section-title-line right"></span>
           </div>
 
-          <!-- Suba foto1.jpg, foto2.jpg, foto3.jpg, foto4.jpg e foto5.jpg na mesma pasta -->
           <div class="polaroid-gallery">
             <div class="polaroid-card" onclick="openPhotoModal('foto1.jpg', 'Você e eu ❤️')">
               <div class="polaroid-img-box">
@@ -1896,7 +1903,7 @@
           </div>
         </div>
 
-        <!-- Seção 7: Nossa Música + Vídeo do YouTube Responsivo -->
+        <!-- Seção 7: Nossa Música (Reprodução Local Exclusiva) -->
         <div id="nossa-musica" class="music-section-wrap">
           <h2 class="music-header-title">
             <span>🎵 Essa música sempre vai me lembrar você ❤️</span>
@@ -1927,35 +1934,29 @@
               </div>
             </div>
 
+            <!-- Barra de Progresso do Arquivo de Áudio -->
             <div class="music-progress-wrap">
-              <span id="music-time-display" class="music-time">0:00 / 3:37</span>
-              <div id="music-progress-bar" class="music-progress-bar" title="Toque para avançar">
+              <span id="music-time-display" class="music-time">0:00 / 3:38</span>
+              <div id="music-progress-bar" class="music-progress-bar" title="Toque para escolher o trecho da música">
                 <div id="music-progress-fill" class="music-progress-fill">
                   <span class="music-progress-Fill-dot"></span>
                 </div>
               </div>
             </div>
 
+            <!-- Botões de Reprodução, Pausa, Avanço e Mudo -->
             <div class="music-controls">
-              <button class="ctrl-btn" onclick="restartMusic()" title="Reiniciar" aria-label="Reiniciar">🔀</button>
-              <button class="ctrl-btn" onclick="seekMusic(-10)" title="Voltar 10s" aria-label="Voltar 10 segundos">⏮</button>
+              <button class="ctrl-btn" onclick="restartMusic()" title="Reiniciar música" aria-label="Reiniciar música">🔀</button>
+              <button class="ctrl-btn" onclick="seekMusic(-10)" title="Voltar 10 segundos" aria-label="Voltar 10 segundos">⏮</button>
               <button id="play-pause-btn" class="ctrl-btn ctrl-play-main" onclick="toggleMusic()" aria-label="Reproduzir ou pausar">▶</button>
-              <button class="ctrl-btn" onclick="seekMusic(10)" title="Avançar 10s" aria-label="Avançar 10 segundos">⏭</button>
-              <button id="mute-btn" class="ctrl-btn" onclick="toggleMute()" title="Silenciar" aria-label="Silenciar">🔊</button>
+              <button class="ctrl-btn" onclick="seekMusic(10)" title="Avançar 10 segundos" aria-label="Avançar 10 segundos">⏭</button>
+              <button id="mute-btn" class="ctrl-btn" onclick="toggleMute()" title="Ativar ou desativar som" aria-label="Ativar ou desativar som">🔊</button>
             </div>
 
-            <!-- Player de Vídeo do YouTube Responsivo (16:9 ajustado à tela) -->
-            <div class="yt-video-wrapper">
-              <div id="yt-official-player"></div>
-            </div>
-
-            <div class="official-music-links">
-              <a href="https://www.youtube.com/watch?v=gQOxw_2nN3E" target="_blank" rel="noopener noreferrer">
-                ▶ Abrir no YouTube
-              </a>
-              <a href="https://open.spotify.com/search/Matheus%20e%20Kauan%20Amor%20Sem%20Medida" target="_blank" rel="noopener noreferrer">
-                🎧 Ouvir no Spotify
-              </a>
+            <!-- Controle de Volume Integrado -->
+            <div class="volume-control-row">
+              <span class="volume-label">🔈 Volume</span>
+              <input id="volume-slider" class="volume-slider" type="range" min="0" max="1" step="0.02" value="1" aria-label="Volume da música" />
             </div>
           </div>
         </div>
@@ -2195,93 +2196,34 @@
     setInterval(updateLoveCounter, 1000);
 
     /* ==========================================================================
-       2. SISTEMA DE MÚSICA E VÍDEO YOUTUBE SINCRONIZADO (MP3 + YOUTUBE API)
+       2. PLAYER DE ÁUDIO 100% LOCAL (SEM YOUTUBE E SEM LINKS EXTERNOS)
        ========================================================================== */
-    // IDs de "Matheus & Kauan - Amor Sem Medida" no YouTube (principal + reserva liberado para embed)
-    const YT_VIDEO_IDS = ['gQOxw_2nN3E', 'fX5USg8_1gA'];
-    let currentVideoIndex = 0;
-
     const audio = document.getElementById('couple-audio');
     const playPauseBtn = document.getElementById('play-pause-btn');
     const muteBtn = document.getElementById('mute-btn');
+    const volumeSlider = document.getElementById('volume-slider');
     const progressFill = document.getElementById('music-progress-fill');
     const progressBar = document.getElementById('music-progress-bar');
     const timeDisplay = document.getElementById('music-time-display');
     const musicEq = document.getElementById('music-eq');
     const musicDisc = document.getElementById('music-disc');
 
-    let mp3Available = false;
-    let ytPlayer = null;
-    let ytReady = false;
-    let isPlaying = false;
-    let isMuted = false;
-
-    // Verifica se o arquivo musica.mp3 foi enviado para o repositório
-    audio.addEventListener('canplay', () => {
-      mp3Available = true;
-    });
-
-    audio.addEventListener('error', () => {
-      mp3Available = false;
-    });
-
-    // Carrega a API Oficial do YouTube
-    const ytScript = document.createElement('script');
-    ytScript.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(ytScript);
-
-    window.onYouTubeIframeAPIReady = function () {
-      ytPlayer = new YT.Player('yt-official-player', {
-        videoId: YT_VIDEO_IDS[currentVideoIndex],
-        playerVars: {
-          autoplay: 0,
-          controls: 1,
-          rel: 0,
-          modestbranding: 1,
-          playsinline: 1
-        },
-        events: {
-          onReady: () => {
-            ytReady = true;
-          },
-          onStateChange: (e) => {
-            if (e.data === YT.PlayerState.PLAYING) {
-              // Se o vídeo do YouTube começar a tocar, pausa o MP3 para não duplicar áudio
-              if (!audio.paused) audio.pause();
-              updatePlayerUI(true);
-            } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
-              if (audio.paused) updatePlayerUI(false);
-            }
-          },
-          onError: () => {
-            // Caso o vídeo principal tenha bloqueio de incorporação, carrega o vídeo alternativo
-            if (currentVideoIndex + 1 < YT_VIDEO_IDS.length) {
-              currentVideoIndex++;
-              ytPlayer.loadVideoById(YT_VIDEO_IDS[currentVideoIndex]);
-            }
-          }
-        }
-      });
-    };
+    const DEFAULT_DURATION = 218; // 3:38 (duração exata do áudio enviado)
 
     function formatTime(sec) {
-      if (!sec || isNaN(sec)) return '0:00';
+      if (!sec || isNaN(sec) || !isFinite(sec)) return '0:00';
       const m = Math.floor(sec / 60);
       const s = Math.floor(sec % 60);
       return `${m}:${String(s).padStart(2, '0')}`;
     }
 
     function updatePlayerUI(playing) {
-      isPlaying = playing;
       playPauseBtn.textContent = playing ? '⏸' : '▶';
       musicEq.classList.toggle('active', playing);
       musicDisc.classList.toggle('playing-spin', playing);
     }
 
     audio.addEventListener('play', () => {
-      if (ytReady && ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
-        try { ytPlayer.pauseVideo(); } catch (e) {}
-      }
       updatePlayerUI(true);
     });
 
@@ -2289,115 +2231,81 @@
       updatePlayerUI(false);
     });
 
-    // Atualiza a barra de progresso tanto para MP3 quanto para YouTube
-    setInterval(() => {
-      if (!isPlaying) return;
+    audio.addEventListener('loadedmetadata', () => {
+      const total = audio.duration || DEFAULT_DURATION;
+      timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(total)}`;
+    });
 
-      let current = 0;
-      let total = 217;
-
-      if (!audio.paused && audio.duration) {
-        current = audio.currentTime;
-        total = audio.duration;
-      } else if (ytReady && ytPlayer && typeof ytPlayer.getCurrentTime === 'function') {
-        try {
-          current = ytPlayer.getCurrentTime() || 0;
-          total = ytPlayer.getDuration() || 217;
-        } catch (e) {}
-      }
-
+    audio.addEventListener('timeupdate', () => {
+      const current = audio.currentTime || 0;
+      const total = (audio.duration && isFinite(audio.duration)) ? audio.duration : DEFAULT_DURATION;
       const pct = Math.min(100, (current / total) * 100);
       progressFill.style.width = `${pct}%`;
       timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
-    }, 500);
-
-    function startMusicOnOpen() {
-      audio.play().then(() => {
-        mp3Available = true;
-        updatePlayerUI(true);
-      }).catch(() => {
-        if (ytReady && ytPlayer && typeof ytPlayer.playVideo === 'function') {
-          try { ytPlayer.playVideo(); } catch (e) {}
-        }
-      });
-    }
+    });
 
     function toggleMusic() {
-      if (isPlaying) {
-        audio.pause();
-        if (ytReady && ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
-          try { ytPlayer.pauseVideo(); } catch (e) {}
-        }
-        updatePlayerUI(false);
+      if (audio.paused) {
+        audio.play().catch(() => {});
       } else {
-        if (mp3Available) {
-          audio.play().catch(() => {});
-        } else if (ytReady && ytPlayer && typeof ytPlayer.playVideo === 'function') {
-          try { ytPlayer.playVideo(); } catch (e) {}
-        } else {
-          audio.play().catch(() => {});
-        }
+        audio.pause();
       }
     }
 
     function restartMusic() {
-      if (mp3Available) {
-        audio.currentTime = 0;
-        audio.play().catch(() => {});
-      } else if (ytReady && ytPlayer && typeof ytPlayer.seekTo === 'function') {
-        try {
-          ytPlayer.seekTo(0, true);
-          ytPlayer.playVideo();
-        } catch (e) {}
-      }
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
     }
 
     function seekMusic(offset) {
-      if (mp3Available && audio.duration) {
-        audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + offset));
-      } else if (ytReady && ytPlayer && typeof ytPlayer.getCurrentTime === 'function') {
-        try {
-          const cur = ytPlayer.getCurrentTime() || 0;
-          ytPlayer.seekTo(Math.max(0, cur + offset), true);
-        } catch (e) {}
-      }
+      const total = (audio.duration && isFinite(audio.duration)) ? audio.duration : DEFAULT_DURATION;
+      audio.currentTime = Math.max(0, Math.min(total, (audio.currentTime || 0) + offset));
     }
 
     function toggleMute() {
-      isMuted = !isMuted;
-      audio.muted = isMuted;
-      muteBtn.textContent = isMuted ? '🔇' : '🔊';
-      if (ytReady && ytPlayer) {
-        try {
-          if (isMuted) ytPlayer.mute();
-          else ytPlayer.unMute();
-        } catch (e) {}
-      }
+      audio.muted = !audio.muted;
+      muteBtn.textContent = audio.muted ? '🔇' : '🔊';
+      volumeSlider.value = audio.muted ? 0 : audio.volume;
+    }
+
+    volumeSlider.addEventListener('input', (e) => {
+      const val = parseFloat(e.target.value);
+      audio.volume = val;
+      audio.muted = (val === 0);
+      muteBtn.textContent = audio.muted ? '🔇' : '🔊';
+    });
+
+    // Permite avançar/voltar tocando ou arrastando na barra no celular e computador
+    function scrubAudio(clientX) {
+      const rect = progressBar.getBoundingClientRect();
+      const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      const total = (audio.duration && isFinite(audio.duration)) ? audio.duration : DEFAULT_DURATION;
+      audio.currentTime = ratio * total;
     }
 
     progressBar.addEventListener('click', (e) => {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-
-      if (mp3Available && audio.duration) {
-        audio.currentTime = ratio * audio.duration;
-      } else if (ytReady && ytPlayer && typeof ytPlayer.getDuration === 'function') {
-        try {
-          const dur = ytPlayer.getDuration() || 217;
-          ytPlayer.seekTo(ratio * dur, true);
-        } catch (err) {}
-      }
+      scrubAudio(e.clientX);
     });
 
+    progressBar.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 0) scrubAudio(e.touches[0].clientX);
+    }, { passive: true });
+
+    progressBar.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) scrubAudio(e.touches[0].clientX);
+    }, { passive: true });
+
     /* ==========================================================================
-       3. ABERTURA DA TELA INICIAL E NAVEGAÇÃO ATIVA
+       3. ABERTURA DA TELA INICIAL E REPRODUÇÃO AUTOMÁTICA NO CLIQUE
        ========================================================================== */
     const openBtn = document.getElementById('open-universe-btn');
     const splashScreen = document.getElementById('splash-screen');
 
     openBtn.addEventListener('click', () => {
       openBtn.classList.add('clicked-heart');
-      startMusicOnOpen();
+
+      // Inicia o arquivo musica.mp3 imediatamente no clique da Jessica
+      audio.play().catch(() => {});
 
       setTimeout(() => {
         splashScreen.classList.add('hidden-splash');
@@ -2405,7 +2313,6 @@
       }, 500);
     });
 
-    // Atualiza o link ativo no menu conforme o toque
     const navLinks = document.querySelectorAll('.main-nav a');
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
